@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johnny & Irene — Wedding Dashboard</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --border: #e8e8e5;
+  --text: #1c1c1a;
+  --text-sub: #72726e;
+  --text-muted: #a8a8a4;
+  --accent: #1a5c4a;
+  --accent-light: #f0f7f5;
+  --accent-border: #b2d8ce;
+  --rose: #8b3a52;
+  --radius: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; }
+.header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.875rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header .sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+.pill-countdown { background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--accent); font-weight: 600; }
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-bottom: 1px solid var(--border); }
+.stat { text-align: center; padding: 0.75rem 0.5rem; border-right: 1px solid var(--border); }
+.stat:last-child { border-right: none; }
+.stat-num { font-size: 20px; font-weight: 600; color: var(--accent); }
+.stat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 1.5rem; }
+.tab { padding: 0.625rem 1rem; font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--text-sub); margin-bottom: -1px; white-space: nowrap; transition: all 0.12s; }
+.tab:hover { color: var(--text); }
+.tab.active { border-bottom-color: var(--accent); color: var(--accent); font-weight: 500; }
+.content { padding: 1.25rem 1.5rem; max-width: 900px; }
+.phase-group { margin-bottom: 1.5rem; }
+.phase-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
+.phase-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); white-space: nowrap; }
+.phase-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.phase-fill { height: 100%; border-radius: 2px; }
+.phase-count { font-size: 10px; color: var(--text-muted); white-space: nowrap; }
+.task-list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.task-row { display: flex; align-items: center; gap: 10px; padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--border); }
+.task-row:last-child { border-bottom: none; }
+.task-row:hover { background: var(--accent-light); }
+.sdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.sdot-todo { background: #d0d0cc; }
+.sdot-doing { background: #378ADD; }
+.sdot-done { background: #1D9E75; }
+.task-name { flex: 1; font-size: 12.5px; }
+.task-name a { color: var(--text); text-decoration: none; }
+.task-name a:hover { color: var(--accent); text-decoration: underline; }
+.task-name.done-txt { text-decoration: line-through; color: var(--text-muted); }
+.tag { font-size: 10px; background: var(--bg); border-radius: 3px; padding: 1px 6px; color: var(--text-muted); white-space: nowrap; }
+.date-tag { font-size: 10.5px; color: var(--text-sub); white-space: nowrap; }
+.date-tag.od { color: var(--rose); font-weight: 600; }
+.toolbar { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+.search-input { flex: 1; min-width: 160px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 12.5px; background: var(--surface); color: var(--text); }
+.search-input:focus { outline: none; border-color: var(--accent); }
+.fpill { padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; font-size: 11px; cursor: pointer; background: var(--surface); color: var(--text-sub); white-space: nowrap; user-select: none; }
+.fpill:hover { background: var(--bg); }
+.fpill.on { background: var(--accent-light); border-color: var(--accent-border); color: var(--accent); font-weight: 500; }
+.sep { color: var(--border); padding: 0 2px; }
+.notion-btn { margin-left: auto; font-size: 11px; color: var(--text-muted); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); white-space: nowrap; }
+.notion-btn:hover { color: var(--accent); border-color: var(--accent-border); }
+.vtable { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.vtable th { text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-sub); padding: 0.5rem 0.75rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+.vtable td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); font-size: 12.5px; vertical-align: middle; }
+.vtable tr:last-child td { border-bottom: none; }
+.vtable tr:hover td { background: var(--accent-light); }
+.vname a { font-weight: 500; color: var(--text); text-decoration: none; }
+.vname a:hover { color: var(--accent); }
+.badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 20px; font-weight: 600; }
+.t1b { background: #e1f5ee; color: #0f6e56; }
+.t2b { background: #e6f1fb; color: #185fa5; }
+.sb-0 { background: #f0f0ee; color: #888; }
+.sb-1 { background: #dbeafe; color: #1e40af; }
+.sb-2 { background: #fef3c7; color: #b45309; }
+.sb-3 { background: #ffedd5; color: #c2410c; }
+.sb-4 { background: #ede9fe; color: #6d28d9; }
+.sb-5 { background: #d1fae5; color: #065f46; }
+.sb-6 { background: #fee2e2; color: #b91c1c; }
+.s-label { display: inline-block; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; }
+.team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.875rem 1rem; margin-bottom: 8px; display: flex; gap: 1rem; }
+.team-rank { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.team-body { flex: 1; min-width: 0; }
+.team-title { font-size: 13px; font-weight: 600; }
+.team-title a { color: var(--text); text-decoration: none; }
+.team-title a:hover { color: var(--accent); }
+.team-meta { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
+.team-pubs { font-size: 11.5px; color: var(--text-sub); margin-top: 3px; }
+.team-notes { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 3px; }
+.team-tags { margin-top: 5px; display: flex; gap: 4px; flex-wrap: wrap; }
+.tc-p { background: #e6f1fb; color: #185fa5; }
+.tc-v { background: #ede9fe; color: #6d28d9; }
+.tc-c { background: #d1fae5; color: #065f46; }
+.tb-b { background: #d1fae5; color: #065f46; }
+.tb-c { background: #dbeafe; color: #1e40af; }
+.team-right { flex-shrink: 0; text-align: right; }
+.team-price { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+.ws-link { font-size: 10.5px; color: var(--accent); display: block; margin-top: 4px; }
+.loading { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
+.spin { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 8px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.err { background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius); padding: 0.75rem 1rem; color: #b91c1c; font-size: 12.5px; margin-bottom: 1rem; }
+.meta-line { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>Johnny &amp; Irene Wedding Dashboard</h1>
+    <div class="sub">May 21, 2027 - Hempstead House, Sands Point Preserve, Long Island, NY</div>
+  </div>
+  <div class="pill-countdown" id="countdown">Loading...</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="s-days">-</div><div class="stat-label">Days Away</div></div>
+  <div class="stat"><div class="stat-num" id="s-tasks">-</div><div class="stat-label">Tasks Done</div></div>
+  <div class="stat"><div class="stat-num" id="s-contacted">-</div><div class="stat-label">Vendors Contacted</div></div>
+  <div class="stat"><div class="stat-num" id="s-booked">-</div><div class="stat-label">Vendors Booked</div></div>
+</div>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('tasks',this)">Tasks</div>
+  <div class="tab" onclick="showTab('vendors',this)">Floral and Decor</div>
+  <div class="tab" onclick="showTab('team',this)">Creative Team</div>
+</div>
+<div class="content">
+  <div id="tab-tasks"><div class="loading"><div class="spin"></div><br>Loading tasks from Notion...</div></div>
+  <div id="tab-vendors" style="display:none"><div class="loading"><div class="spin"></div><br>Loading vendors from Notion...</div></div>
+  <div id="tab-team" style="display:none"><div class="loading"><div class="spin"></div><br>Loading team from Notion...</div></div>
+</div>
+<script>
+const TASKS_VIEW='https://app.notion.com/p/fdb8441d07b546f086d0ac978d067279?v=48b1d8a9-9837-4799-8147-61099a5245df';
+const VENDORS_VIEW='https://app.notion.com/p/2173e66d960b442c8a1c64ddfee6bd87?v=c72e9bc4-552c-4a11-b93c-cdb72d0bac92';
+const TEAM_VIEW='https://app.notion.com/p/17d4e3625e924f46a21eb30409e7fe2b?v=81071072-8ca9-46ff-8e23-499cfc8991b8';
+const HUB_URL='https://app.notion.com/p/3a94312b32bb81bb8529f29251aded1c';
+const NOTION_TOOL='mcp__829ef29b-bcae-4534-b897-a8036cef4356__notion-query-database-view';
+let allTasks=[],allVendors=[],allTeam=[];
+let vRegion='all',vTier='all',vStatus='all',vSearch='';
+let tCat='all';
+function showTab(name,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');['tasks','vendors','team'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'':'none');}
+(function(){const ms=new Date('2027-05-21T17:00:00')-new Date();const days=Math.ceil(ms/86400000);document.getElementById('countdown').textContent=days.toLocaleString()+' days to go';document.getElementById('s-days').textContent=days.toLocaleString();})();
+async function fetchAll(viewUrl){const rows=[];let cursor=null;do{const args={view_url:viewUrl,page_size:100};if(cursor)args.start_cursor=cursor;const r=await window.cowork.callMcpTool(NOTION_TOOL,args);const data=r.structuredContent??JSON.parse(r.content[0].text);if(data.error||r.isError)throw new Error(data.message||'Notion error');rows.push(...(data.results||[]));cursor=data.has_more?data.next_cursor:null;}while(cursor);return rows;}
+function fmtDate(d){if(!d)return'';return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});}
+function isOD(d,status){return d&&status!=='Done'&&new Date(d)<new Date();}
+function statusClass(s){return s==='Done'?'sdot-done':s==='In progress'?'sdot-doing':'sdot-todo';}
+const STATUS_MAP={'Not contacted':'sb-0','Email sent':'sb-1','Responded':'sb-2','Call scheduled':'sb-3','Quote received':'sb-4','Booked':'sb-5','Pass':'sb-6'};
+function sBadge(s){return '<span class="s-label '+(STATUS_MAP[s]||'sb-0')+'">'+(s||'Not contacted')+'</span>';}
+const PHASES=[{name:'Phase 1 - Foundation',color:'#1D9E75'},{name:'Phase 2 - Team Assembly',color:'#378ADD'},{name:'Phase 3 - Design and Details',color:'#7F77DD'},{name:'Phase 4 - Final Countdown',color:'#D85A30'},{name:'Phase 5 - Wedding Day',color:'#D4537E'},{name:'Phase 6 - Post-Wedding',color:'#888780'}];
+async function loadTasks(){try{allTasks=await fetchAll(TASKS_VIEW);renderTasks();updateStats();}catch(e){document.getElementById('tab-tasks').innerHTML='<div class="err">'+e.message+'</div>';}}
+function renderTasks(){let html='<div style="text-align:right;margin-bottom:0.75rem"><a href="'+HUB_URL+'" target="_blank" class="notion-btn">Edit in Notion</a></div>';PHASES.forEach(function(p){const tasks=allTasks.filter(t=>t.Phase===p.name);if(!tasks.length)return;const done=tasks.filter(t=>t.Status==='Done').length;const pct=Math.round(done/tasks.length*100);html+='<div class="phase-group"><div class="phase-header"><span class="phase-name" style="color:'+p.color+'">'+p.name.replace(/Phase d+ - /,'')+'</span><div class="phase-bar"><div class="phase-fill" style="width:'+pct+'%;background:'+p.color+'"></div></div><span class="phase-count">'+done+'/'+tasks.length+'</span></div><div class="task-list">';[...tasks].sort((a,b)=>(a['date:Due Date:start']||'9999')<(b['date:Due Date:start']||'9999')?-1:1).forEach(function(t){const d=t['date:Due Date:start'];const od=isOD(d,t.Status);const isDone=t.Status==='Done';html+='<div class="task-row"><div class="sdot '+statusClass(t.Status)+'"></div><div class="task-name'+(isDone?' done-txt':'')+'"><a href="'+t.url+'" target="_blank">'+t.Name+'</a></div><span class="tag">'+(t.Owner||'')+'</span><span class="date-tag'+(od?' od':'')+'">'+fmtDate(d)+'</span></div>';});html+='</div></div>';});document.getElementById('tab-tasks').innerHTML=html;}
+async function loadVendors(){try{allVendors=await fetchAll(VENDORS_VIEW);renderVendors();updateStats();}catch(e){document.getElementById('tab-vendors').innerHTML='<div class="err">'+e.message+'</div>';}}
+function fpill(label,val,cur,fn){return '<span class="fpill'+(cur===val?' on':'')+'" onclick="'+fn+'=''+val+'';renderVendors()">'+label+'</span>';}
+function renderVendors(){const s=vSearch.toLowerCase();const filtered=allVendors.filter(function(v){if(vRegion!=='all'&&v.Region!==vRegion)return false;if(vTier!=='all'&&v.Tier!==vTier)return false;if(vStatus!=='all'&&v.Status!==vStatus)return false;if(s&&!v.Name.toLowerCase().includes(s)&&!(v.Notes||'').toLowerCase().includes(s))return false;return true;});const t1=allVendors.filter(v=>v.Tier==='Tier 1 - Direct Email').length;const contacted=allVendors.filter(v=>v.Status&&v.Status!=='Not contacted').length;const html=fpill('All regions','all',vRegion,'vRegion')+fpill('Long Island','Long Island',vRegion,'vRegion')+fpill('NYC','NYC',vRegion,'vRegion')+fpill('NJ','NJ',vRegion,'vRegion')+'<span class="sep">|</span>'+fpill('All tiers','all',vTier,'vTier')+fpill('Has email','Tier 1 - Direct Email',vTier,'vTier')+fpill('Form only','Tier 2 - Form/Website',vTier,'vTier')+'<span class="sep">|</span>'+fpill('Any status','all',vStatus,'vStatus')+fpill('Booked','Booked',vStatus,'vStatus')+fpill('Responded','Responded',vStatus,'vStatus')+'<a href="'+HUB_URL+'" target="_blank" class="notion-btn">Edit in Notion</a>';document.getElementById('tab-vendors').innerHTML='<div class="toolbar"><input class="search-input" placeholder="Search vendors..." oninput="vSearch=this.value;renderVendors()" value="'+vSearch+'">'+html+'</div><div class="meta-line">'+filtered.length+' vendors - '+t1+' have direct emails - '+contacted+' contacted</div><table class="vtable"><thead><tr><th>Company</th><th>Region</th><th>Tier</th><th>Status</th><th>Notes</th></tr></thead><tbody>'+filtered.map(function(v){return'<tr><td class="vname"><a href="'+v.url+'" target="_blank">'+v.Name+'</a></td><td>'+(v.Region||'')+'</td><td><span class="badge '+(v.Tier&&v.Tier.includes('1')?'t1b':'t2b')+'">'+(v.Tier&&v.Tier.includes('1')?'Email':'Form')+'</span></td><td>'+sBadge(v.Status)+'</td><td style="max-width:260px;font-size:11.5px;color:var(--text-sub)">'+(v.Notes||'')+'</td></tr>';}).join('')+'</tbody></table>';}
+async function loadTeam(){try{allTeam=await fetchAll(TEAM_VIEW);renderTeam();}catch(e){document.getElementById('tab-team').innerHTML='<div class="err">'+e.message+'</div>';}}
+const CAT_CLS={Photographer:'tc-p',Videographer:'tc-v','Planner/Coordinator':'tc-c'};
+const TIER_CLS={'Tier B - Sweet Spot':'tb-b','Tier C - Rising':'tb-c'};
+function renderTeam(){const filtered=allTeam.filter(t=>tCat==='all'||t.Category===tCat);let html='<div class="toolbar"><span class="fpill'+(tCat==='all'?' on':'')+'" onclick="tCat='all';renderTeam()">All ('+allTeam.length+')</span>'+['Photographer','Videographer','Planner/Coordinator'].map(function(c){return'<span class="fpill'+(tCat===c?' on':'')+'" onclick="tCat=''+c+'';renderTeam()">'+c+'s ('+allTeam.filter(t=>t.Category===c).length+')</span>';}).join('')+'<a href="'+HUB_URL+'" target="_blank" class="notion-btn">Edit in Notion</a></div>';filtered.forEach(function(p,i){const hasScore=p['Score /80']!=null;html+='<div class="team-card"><div class="team-rank">'+(i+1)+'</div><div class="team-body"><div class="team-title"><a href="'+p.url+'" target="_blank">'+p.Name+'</a></div><div class="team-meta">'+(p.Location||'')+'</div><div class="team-pubs">'+(p.Publications||'')+'</div><div class="team-notes">'+(p.Notes||'')+'</div><div class="team-tags"><span class="badge '+(CAT_CLS[p.Category]||'')+'">'+(p.Category||'')+'</span><span class="badge '+(TIER_CLS[p.Tier]||'tb-c')+'">'+(p.Tier||'')+'</span>'+(hasScore?'<span class="badge" style="background:#f0f7f5;color:#1a5c4a">Score: '+p['Score /80']+'/80</span>':'')+'</div></div><div class="team-right"><div class="team-price">'+(p['Price Est.']||'')+'</div>'+sBadge(p.Status)+(p.Website?'<a href="'+p.Website+'" target="_blank" class="ws-link">Website</a>':'')+'</div></div>';});document.getElementById('tab-team').innerHTML=html;}
+function updateStats(){const done=allTasks.filter(t=>t.Status==='Done').length;document.getElementById('s-tasks').textContent=done+'/'+allTasks.length;const contacted=allVendors.filter(v=>v.Status&&v.Status!=='Not contacted').length;const booked=allVendors.filter(v=>v.Status==='Booked').length;document.getElementById('s-contacted').textContent=contacted;document.getElementById('s-booked').textContent=booked;}
+loadTasks();loadVendors();loadTeam();
+</script>
+</body>
+</html>
