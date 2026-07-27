@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Johnny & Irene â Wedding Dashboard</title>
+<title>Johnny & Irene — Wedding Dashboard</title>
 <style>
 :root {
   color-scheme: light;
@@ -127,23 +127,23 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 
 <div class="header">
   <div>
-    <h1>Johnny &amp; Irene ð Wedding Dashboard</h1>
-    <div class="sub">May 21, 2027 Â· Hempstead House, Sands Point Preserve, Long Island, NY</div>
+    <h1>Johnny &amp; Irene 💍 Wedding Dashboard</h1>
+    <div class="sub">May 21, 2027 · Hempstead House, Sands Point Preserve, Long Island, NY</div>
   </div>
   <div class="pill-countdown" id="countdown">Loading...</div>
 </div>
 
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num" id="s-days">â</div><div class="stat-label">Days Away</div></div>
-  <div class="stat"><div class="stat-num" id="s-tasks">â</div><div class="stat-label">Tasks Done</div></div>
-  <div class="stat"><div class="stat-num" id="s-contacted">â</div><div class="stat-label">Vendors Contacted</div></div>
-  <div class="stat"><div class="stat-num" id="s-booked">â</div><div class="stat-label">Vendors Booked</div></div>
+  <div class="stat"><div class="stat-num" id="s-days">—</div><div class="stat-label">Days Away</div></div>
+  <div class="stat"><div class="stat-num" id="s-tasks">—</div><div class="stat-label">Tasks Done</div></div>
+  <div class="stat"><div class="stat-num" id="s-contacted">—</div><div class="stat-label">Vendors Contacted</div></div>
+  <div class="stat"><div class="stat-num" id="s-booked">—</div><div class="stat-label">Vendors Booked</div></div>
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('tasks',this)">ð Tasks</div>
-  <div class="tab" onclick="showTab('vendors',this)">ð¸ Floral &amp; Decor</div>
-  <div class="tab" onclick="showTab('team',this)">ð¸ Creative Team</div>
+  <div class="tab active" onclick="showTab('tasks',this)">📋 Tasks</div>
+  <div class="tab" onclick="showTab('vendors',this)">🌸 Floral &amp; Decor</div>
+  <div class="tab" onclick="showTab('team',this)">📸 Creative Team</div>
 </div>
 
 <div class="content">
@@ -204,43 +204,45 @@ function sBadge(s) {
   return `<span class="s-label ${STATUS_MAP[s]||'sb-0'}">${s||'Not contacted'}</span>`;
 }
 
-// ââ TASKS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// TASKS
 const PHASES = [
-  {name:'Phase 1 â Foundation', color:'#1D9E75'},
-  {name:'Phase 2 â Team Assembly', color:'#378ADD'},
-  {name:'Phase 3 â Design & Details', color:'#7F77DD'},
-  {name:'Phase 4 â Final Countdown', color:'#D85A30'},
-  {name:'Phase 5 â Wedding Day', color:'#D4537E'},
-  {name:'Phase 6 â Post-Wedding', color:'#888780'},
+  {name:'Phase 1 \u2014 Foundation', color:'#1D9E75'},
+  {name:'Phase 2 \u2014 Team Assembly', color:'#378ADD'},
+  {name:'Phase 3 \u2014 Design & Details', color:'#7F77DD'},
+  {name:'Phase 4 \u2014 Final Countdown', color:'#D85A30'},
+  {name:'Phase 5 \u2014 Wedding Day', color:'#D4537E'},
+  {name:'Phase 6 \u2014 Post-Wedding', color:'#888790'},
 ];
 
 async function loadTasks() {
   try {
     const r = await fetch('./tasks.json');
-    if (!r.ok) throw new Error('tasks.json not found â run the GitHub Action first');
+    if (!r.ok) throw new Error('tasks.json not found - run the GitHub Action first');
     const json = await r.json();
     allTasks = json.data || [];
     lastUpdated = json.updated;
     renderTasks();
     updateStats();
   } catch(e) {
-    document.getElementById('tab-tasks').innerHTML = `<div class="err">â  ${e.message}</div>`;
+    document.getElementById('tab-tasks').innerHTML = `<div class="err"> ${e.message}</div>`;
   }
 }
 
 function renderTasks() {
   let html = '';
   if (lastUpdated) {
-    html += `<div class="updated-line">Data updated ${fmtUpdated(lastUpdated)} Â· <a href="${HUB_URL}" target="_blank" style="color:var(--accent)">Edit in Notion â</a></div>`;
+    html += `<div class="updated-line">Data updated ${fmtUpdated(lastUpdated)} \u00b7 <a href="${HUB_URL}" target="_blank" style="color:var(--accent)">Edit in Notion \u2192</a></div>`;
   }
   PHASES.forEach(({name, color}) => {
-    const phaseNum = name.match(/\d+/)?.[0]; const tasks = allTasks.filter(t => t.phase?.match(/\d+/)?.[0] === phaseNum);
+    const phaseNum = name.match(/\d+/)?.[0];
+    const tasks = allTasks.filter(t => t.phase?.match(/\d+/)?.[0] === phaseNum);
     if (!tasks.length) return;
     const done = tasks.filter(t => t.status === 'Done').length;
     const pct = Math.round(done/tasks.length*100);
+    const label = tasks[0].phase?.replace(/Phase \d+\s*\\S+\s*/, '') || name;
     html += `<div class="phase-group">
       <div class="phase-header">
-        <span class="phase-name" style="color:${color}">${name.replace(/Phase \d+ â /,'')}</span>
+        <span class="phase-name" style="color:${color}">${label}</span>
         <div class="phase-bar"><div class="phase-fill" style="width:${pct}%;background:${color}"></div></div>
         <span class="phase-count">${done}/${tasks.length}</span>
       </div>
@@ -261,17 +263,17 @@ function renderTasks() {
   document.getElementById('tab-tasks').innerHTML = html;
 }
 
-// ââ VENDORS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// VENDORS
 async function loadVendors() {
   try {
     const r = await fetch('./vendors.json');
-    if (!r.ok) throw new Error('vendors.json not found â run the GitHub Action first');
+    if (!r.ok) throw new Error('vendors.json not found - run the GitHub Action first');
     const json = await r.json();
     allVendors = json.data || [];
     renderVendors();
     updateStats();
   } catch(e) {
-    document.getElementById('tab-vendors').innerHTML = `<div class="err">â  ${e.message}</div>`;
+    document.getElementById('tab-vendors').innerHTML = `<div class="err"> ${e.message}</div>`;
   }
 }
 
@@ -288,7 +290,7 @@ function renderVendors() {
     if (s && !v.name.toLowerCase().includes(s) && !(v.notes||'').toLowerCase().includes(s)) return false;
     return true;
   });
-  const t1 = allVendors.filter(v => v.tier==='Tier 1 â Direct Email').length;
+  const t1 = allVendors.filter(v => v.tier?.includes('1')).length;
   const contacted = allVendors.filter(v => v.status && v.status!=='Not contacted').length;
 
   const html = `
@@ -300,24 +302,22 @@ function renderVendors() {
       ${fpill('NJ','NJ',vRegion,'vRegion')}
       <span class="sep">|</span>
       ${fpill('All tiers','all',vTier,'vTier')}
-      ${fpill('Has email','Tier 1 â Direct Email',vTier,'vTier')}
-      ${fpill('Form only','Tier 2 â Form/Website',vTier,'vTier')}
+      ${fpill('Has email','Tier 1',vTier,'vTier')}
+      ${fpill('Form only','Tier 2',vTier,'vTier')}
       <span class="sep">|</span>
       ${fpill('Any status','all',vStatus,'vStatus')}
-      ${fpill('Booked â','Booked',vStatus,'vStatus')}
+      ${fpill('Booked','Booked',vStatus,'vStatus')}
       ${fpill('Responded','Responded',vStatus,'vStatus')}
-      <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion â</a>
+      <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion</a>
     </div>
-    <div class="meta-line">${filtered.length} vendors Â· ${t1} have direct emails Â· ${contacted} contacted</div>
+    <div class="meta-line">${filtered.length} vendors \u00b7 ${t1} have direct emails \u00b7 ${contacted} contacted</div>
     <table class="vtable">
       <thead><tr>
         <th>Company</th><th>Region</th><th>Tier</th><th>Status</th><th>Notes</th>
       </tr></thead>
       <tbody>
         ${filtered.map(v => `<tr>
-          <td class="vname">
-            <a href="${v.url}" target="_blank">${v.name}</a>
-          </td>
+          <td class="vname"><a href="${v.url}" target="_blank">${v.name}</a></td>
           <td>${v.region||''}</td>
           <td><span class="badge ${v.tier?.includes('1')?'t1b':'t2b'}">${v.tier?.includes('1')?'Email':'Form'}</span></td>
           <td>${sBadge(v.status)}</td>
@@ -328,21 +328,21 @@ function renderVendors() {
   document.getElementById('tab-vendors').innerHTML = html;
 }
 
-// ââ TEAM âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// TEAM
 async function loadTeam() {
   try {
     const r = await fetch('./team.json');
-    if (!r.ok) throw new Error('team.json not found â run the GitHub Action first');
+    if (!r.ok) throw new Error('team.json not found - run the GitHub Action first');
     const json = await r.json();
     allTeam = json.data || [];
     renderTeam();
   } catch(e) {
-    document.getElementById('tab-team').innerHTML = `<div class="err">â  ${e.message}</div>`;
+    document.getElementById('tab-team').innerHTML = `<div class="err"> ${e.message}</div>`;
   }
 }
 
 const CAT_CLS = { Photographer:'tc-p', Videographer:'tc-v', 'Planner/Coordinator':'tc-c' };
-const TIER_CLS = { 'Tier B â Sweet Spot':'tb-b', 'Tier C â Rising':'tb-c' };
+const TIER_CLS = { 'Tier B':'tb-b', 'Tier C':'tb-c' };
 
 function renderTeam() {
   const filtered = allTeam.filter(t => tCat==='all' || t.category===tCat);
@@ -351,7 +351,7 @@ function renderTeam() {
     ${['Photographer','Videographer','Planner/Coordinator'].map(c =>
       `<span class="fpill${tCat===c?' on':''}" onclick="tCat='${c}';renderTeam()">${c}s (${allTeam.filter(t=>t.category===c).length})</span>`
     ).join('')}
-    <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion â</a>
+    <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion</a>
   </div>`;
   filtered.forEach((p, i) => {
     html += `<div class="team-card">
@@ -370,14 +370,13 @@ function renderTeam() {
       <div class="team-right">
         <div class="team-price">${p.priceEst||''}</div>
         ${sBadge(p.status)}
-        ${p.website ? `<a href="${p.website}" target="_blank" class="ws-link">Website â</a>` : ''}
+        ${p.website ? `<a href="${p.website}" target="_blank" class="ws-link">Website</a>` : ''}
       </div>
     </div>`;
   });
   document.getElementById('tab-team').innerHTML = html;
 }
 
-// ââ STATS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function updateStats() {
   const done = allTasks.filter(t => t.status==='Done').length;
   if (allTasks.length) document.getElementById('s-tasks').textContent = `${done}/${allTasks.length}`;
@@ -389,7 +388,6 @@ function updateStats() {
   }
 }
 
-// Init
 loadTasks();
 loadVendors();
 loadTeam();
