@@ -234,7 +234,7 @@ function renderTasks() {
     html += `<div class="updated-line">Data updated ${fmtUpdated(lastUpdated)} Â· <a href="${HUB_URL}" target="_blank" style="color:var(--accent)">Edit in Notion â</a></div>`;
   }
   PHASES.forEach(({name, color}) => {
-    const tasks = allTasks.filter(t => t.phase === name);
+    const phaseNum = name.match(/\d+/)?.[0]; const tasks = allTasks.filter(t => t.phase?.match(/\d+/)?.[0] === phaseNum);
     if (!tasks.length) return;
     const done = tasks.filter(t => t.status === 'Done').length;
     const pct = Math.round(done/tasks.length*100);
