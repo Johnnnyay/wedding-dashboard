@@ -19,7 +19,7 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         run: |
-          python3 << 'PYEOF'
+          python3 - <<'PYEOF'
           import json, urllib.request, os
           from datetime import datetime, timezone
 
@@ -52,7 +52,6 @@ jobs:
               return results
 
           def gp(props, name):
-              """Get flattened value from a Notion property."""
               p = props.get(name)
               if not p:
                   return None
@@ -83,7 +82,7 @@ jobs:
 
           now = datetime.now(timezone.utc).isoformat()
 
-          # ââ Tasks ââââââââââââââââââââââââââââââââââââââââââââââ
+          # Tasks
           print('Fetching Tasks...')
           tasks_raw = query_db('fdb8441d07b546f086d0ac978d067279')
           tasks = []
@@ -102,7 +101,7 @@ jobs:
               json.dump({'updated': now, 'data': tasks}, f)
           print(f'Tasks: {len(tasks)} rows written')
 
-          # ââ Vendors ââââââââââââââââââââââââââââââââââââââââââââ
+          # Vendors
           print('Fetching Vendors...')
           vendors_raw = query_db('2173e66d960b442c8a1c64ddfee6bd87')
           vendors = []
@@ -121,7 +120,7 @@ jobs:
               json.dump({'updated': now, 'data': vendors}, f)
           print(f'Vendors: {len(vendors)} rows written')
 
-          # ââ Creative Team ââââââââââââââââââââââââââââââââââââââ
+          # Creative Team
           print('Fetching Creative Team...')
           team_raw = query_db('17d4e3625e924f46a21eb30409e7fe2b')
           team = []
