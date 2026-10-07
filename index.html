@@ -4,12 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Johnny & Irene — Wedding Dashboard</title>
+<script>
+try { var m = localStorage.getItem('wedtheme'); if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m); } catch (e) {}
+</script>
 <style>
 :root {
   color-scheme: light;
   --bg: #f7f7f5;
   --surface: #ffffff;
   --border: #e8e8e5;
+  --border-strong: #d0d0cc;
   --text: #1c1c1a;
   --text-sub: #72726e;
   --text-muted: #a8a8a4;
@@ -18,6 +22,45 @@
   --accent-border: #b2d8ce;
   --rose: #8b3a52;
   --radius: 8px;
+  /* chips: background / ink pairs */
+  --c-grey-bg: #f0f0ee;  --c-grey: #6f6f6b;
+  --c-blue-bg: #dbeafe;  --c-blue: #1e40af;
+  --c-amber-bg: #fef3c7; --c-amber: #b45309;
+  --c-orange-bg: #ffedd5;--c-orange: #c2410c;
+  --c-violet-bg: #ede9fe;--c-violet: #6d28d9;
+  --c-green-bg: #d1fae5; --c-green: #065f46;
+  --c-red-bg: #fee2e2;   --c-red: #b91c1c; --c-red-line: #fca5a5;
+  --dot-todo: #d0d0cc;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #111312; --surface: #181b1a; --border: #2a2f2d; --border-strong: #3a413e;
+    --text: #e7e9e6; --text-sub: #a9aea9; --text-muted: #7c827d;
+    --accent: #5fc0a2; --accent-light: #172621; --accent-border: #2c5a4c; --rose: #e2809b;
+    --c-grey-bg: #262a28;  --c-grey: #a9aea9;
+    --c-blue-bg: #18253d;  --c-blue: #8cb4f5;
+    --c-amber-bg: #2c2414; --c-amber: #e2b04f;
+    --c-orange-bg: #2e1d12;--c-orange: #f0995f;
+    --c-violet-bg: #241d3a;--c-violet: #b9a6f5;
+    --c-green-bg: #13291f; --c-green: #6fd3a5;
+    --c-red-bg: #2e1617;   --c-red: #f08a8a; --c-red-line: #6b2b2d;
+    --dot-todo: #4a514d;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111312; --surface: #181b1a; --border: #2a2f2d; --border-strong: #3a413e;
+  --text: #e7e9e6; --text-sub: #a9aea9; --text-muted: #7c827d;
+  --accent: #5fc0a2; --accent-light: #172621; --accent-border: #2c5a4c; --rose: #e2809b;
+  --c-grey-bg: #262a28;  --c-grey: #a9aea9;
+  --c-blue-bg: #18253d;  --c-blue: #8cb4f5;
+  --c-amber-bg: #2c2414; --c-amber: #e2b04f;
+  --c-orange-bg: #2e1d12;--c-orange: #f0995f;
+  --c-violet-bg: #241d3a;--c-violet: #b9a6f5;
+  --c-green-bg: #13291f; --c-green: #6fd3a5;
+  --c-red-bg: #2e1617;   --c-red: #f08a8a; --c-red-line: #6b2b2d;
+  --dot-todo: #4a514d;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; }
@@ -25,7 +68,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.875rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
 .header h1 { font-size: 14px; font-weight: 600; }
 .header .sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
-.pill-countdown { background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--accent); font-weight: 600; }
+.header-right { display: flex; align-items: center; gap: 8px; }
+.themebtn { background: none; border: 1px solid var(--border); border-radius: 7px; padding: 4px 9px; color: var(--text-sub); font: inherit; font-size: 11.5px; cursor: pointer; white-space: nowrap; }
+.themebtn:hover { border-color: var(--border-strong); color: var(--text); }
+.pill-countdown { white-space: nowrap; background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--accent); font-weight: 600; }
 
 .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-bottom: 1px solid var(--border); }
 .stat { text-align: center; padding: 0.75rem 0.5rem; border-right: 1px solid var(--border); }
@@ -52,7 +98,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 .task-row:last-child { border-bottom: none; }
 .task-row:hover { background: var(--accent-light); }
 .sdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.sdot-todo { background: #d0d0cc; }
+.sdot-todo { background: var(--dot-todo); }
 .sdot-doing { background: #378ADD; }
 .sdot-done { background: #1D9E75; }
 .task-name { flex: 1; font-size: 12.5px; }
@@ -83,16 +129,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 .vname a { font-weight: 500; color: var(--text); text-decoration: none; }
 .vname a:hover { color: var(--accent); }
 .badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 20px; font-weight: 600; }
-.t1b { background: #e1f5ee; color: #0f6e56; }
-.t2b { background: #e6f1fb; color: #185fa5; }
-.sb-0 { background: #f0f0ee; color: #888; }
-.sb-1 { background: #dbeafe; color: #1e40af; }
-.sb-2 { background: #fef3c7; color: #b45309; }
-.sb-3 { background: #ffedd5; color: #c2410c; }
-.sb-4 { background: #ede9fe; color: #6d28d9; }
-.sb-5 { background: #d1fae5; color: #065f46; }
-.sb-6 { background: #fee2e2; color: #b91c1c; }
-.s-label { display: inline-block; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; }
+.t1b { background: var(--c-green-bg); color: var(--c-green); }
+.t2b { background: var(--c-blue-bg); color: var(--c-blue); }
+.sb-0 { background: var(--c-grey-bg); color: var(--c-grey); }
+.sb-1 { background: var(--c-blue-bg); color: var(--c-blue); }
+.sb-2 { background: var(--c-amber-bg); color: var(--c-amber); }
+.sb-3 { background: var(--c-orange-bg); color: var(--c-orange); }
+.sb-4 { background: var(--c-violet-bg); color: var(--c-violet); }
+.sb-5 { background: var(--c-green-bg); color: var(--c-green); }
+.sb-6 { background: var(--c-red-bg); color: var(--c-red); }
+.s-label { white-space: nowrap; display: inline-block; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; }
 
 /* TEAM */
 .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.875rem 1rem; margin-bottom: 8px; display: flex; gap: 1rem; }
@@ -105,11 +151,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 .team-pubs { font-size: 11.5px; color: var(--text-sub); margin-top: 3px; }
 .team-notes { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 3px; }
 .team-tags { margin-top: 5px; display: flex; gap: 4px; flex-wrap: wrap; }
-.tc-p { background: #e6f1fb; color: #185fa5; }
-.tc-v { background: #ede9fe; color: #6d28d9; }
-.tc-c { background: #d1fae5; color: #065f46; }
-.tb-b { background: #d1fae5; color: #065f46; }
-.tb-c { background: #dbeafe; color: #1e40af; }
+.tc-p { background: var(--c-blue-bg); color: var(--c-blue); }
+.tc-v { background: var(--c-violet-bg); color: var(--c-violet); }
+.tc-c { background: var(--c-green-bg); color: var(--c-green); }
+.tb-b { background: var(--c-green-bg); color: var(--c-green); }
+.score-b { background: var(--accent-light); color: var(--accent); }
+.tb-c { background: var(--c-blue-bg); color: var(--c-blue); }
 .team-right { flex-shrink: 0; text-align: right; }
 .team-price { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
 .ws-link { font-size: 10.5px; color: var(--accent); display: block; margin-top: 4px; }
@@ -118,9 +165,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
 .loading { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
 .spin { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 8px; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.err { background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius); padding: 0.75rem 1rem; color: #b91c1c; font-size: 12.5px; margin-bottom: 1rem; }
+.err { background: var(--c-red-bg); border: 1px solid var(--c-red-line); border-radius: var(--radius); padding: 0.75rem 1rem; color: var(--c-red); font-size: 12.5px; margin-bottom: 1rem; }
 .meta-line { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
 .updated-line { font-size: 10px; color: var(--text-muted); text-align: right; margin-bottom: 0.5rem; }
+.table-wrap { overflow-x: auto; border-radius: var(--radius); }
+.table-wrap .vtable { min-width: 560px; }
+
+@media (max-width: 600px) {
+  .header { flex-wrap: wrap; gap: 8px; padding: 0.75rem 1rem; }
+  .tabs { padding: 0 0.5rem; overflow-x: auto; }
+  .tab { padding: 0.625rem 0.6rem; }
+  .content { padding: 1rem; }
+}
 </style>
 </head>
 <body>
@@ -130,7 +186,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; back
     <h1>Johnny &amp; Irene 💍 Wedding Dashboard</h1>
     <div class="sub">May 21, 2027 · Hempstead House, Sands Point Preserve, Long Island, NY</div>
   </div>
-  <div class="pill-countdown" id="countdown">Loading...</div>
+  <div class="header-right">
+    <button class="themebtn" id="themebtn" type="button">Theme: Auto</button>
+    <div class="pill-countdown" id="countdown">Loading...</div>
+  </div>
 </div>
 
 <div class="stats-bar">
@@ -311,7 +370,7 @@ function renderVendors() {
       <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion</a>
     </div>
     <div class="meta-line">${filtered.length} vendors \u00b7 ${t1} have direct emails \u00b7 ${contacted} contacted</div>
-    <table class="vtable">
+    <div class="table-wrap"><table class="vtable">
       <thead><tr>
         <th>Company</th><th>Region</th><th>Tier</th><th>Status</th><th>Notes</th>
       </tr></thead>
@@ -324,7 +383,7 @@ function renderVendors() {
           <td style="max-width:260px;font-size:11.5px;color:var(--text-sub)">${v.notes||''}</td>
         </tr>`).join('')}
       </tbody>
-    </table>`;
+    </table></div>`;
   document.getElementById('tab-vendors').innerHTML = html;
 }
 
@@ -364,7 +423,7 @@ function renderTeam() {
         <div class="team-tags">
           <span class="badge ${CAT_CLS[p.category]||''}">${p.category||''}</span>
           ${p.tier ? `<span class="badge ${TIER_CLS[p.tier]||'tb-c'}">${p.tier}</span>` : ''}
-          ${p.score != null ? `<span class="badge" style="background:#f0f7f5;color:#1a5c4a">Score: ${p.score}/80</span>` : ''}
+          ${p.score != null ? `<span class="badge score-b">Score: ${p.score}/80</span>` : ''}
         </div>
       </div>
       <div class="team-right">
@@ -387,6 +446,23 @@ function updateStats() {
     document.getElementById('s-booked').textContent = booked;
   }
 }
+
+// THEME (same three modes as HQ: Auto follows the device)
+const MODES = ['auto','light','dark'];
+let mode = 'auto';
+try { mode = localStorage.getItem('wedtheme') || 'auto'; } catch(e) {}
+if (!MODES.includes(mode)) mode = 'auto';
+function applyTheme() {
+  if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', mode);
+  document.getElementById('themebtn').textContent = 'Theme: ' + mode[0].toUpperCase() + mode.slice(1);
+}
+document.getElementById('themebtn').addEventListener('click', () => {
+  mode = MODES[(MODES.indexOf(mode)+1) % 3];
+  try { localStorage.setItem('wedtheme', mode); } catch(e) {}
+  applyTheme();
+});
+applyTheme();
 
 loadTasks();
 loadVendors();
