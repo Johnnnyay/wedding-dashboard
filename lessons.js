@@ -51,7 +51,7 @@ window.LESSONS = {
     {
       id: 'suzhou', title: { en: 'Buying in Suzhou and Shanghai', zh: '在苏州、上海采购' },
       table: {
-        head: [{ en: 'Item', zh: '物品' }, { en: 'What buyers paid', zh: '买家实际价格' }, { en: 'When', zh: '时间' }],
+        head: [{ en: 'Item', zh: '物品' }, { en: 'What online buyers paid (reference, not a recommendation)', zh: '网上买家实际成交价（参考，不是建议）' }, { en: 'When', zh: '时间' }],
         rows: [
           [{ en: 'Wedding dress, budget end', zh: '婚纱（平价）' }, { en: 'Hard to find under ¥1,500; many shops ¥2,000+ and won’t bargain', zh: '¥1,500 以下很难找；很多店 ¥2,000 起且不讲价' }, { en: '2024', zh: '2024年' }],
           [{ en: 'Simple or short-train dress', zh: '简约或短拖尾婚纱' }, { en: 'Often bargained under ¥1,000', zh: '常能谈到 ¥1,000 以下' }, { en: '2022', zh: '2022年' }],
