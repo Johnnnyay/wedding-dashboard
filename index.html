@@ -233,6 +233,27 @@ td a:hover { color: var(--green); text-decoration: underline; }
 .box { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .box ol, .box ul { margin: 0; padding-left: 20px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
 .box b { color: var(--ink); }
+/* Lessons */
+.key { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); align-items: center; }
+.ltag { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; vertical-align: 2px; }
+.ltag.c { background: var(--green-soft); color: var(--green); }
+.ltag.s { background: var(--blue-soft); color: var(--blue); }
+.ltag.n1 { background: var(--surface-2); color: var(--muted); }
+.ltag.o { background: var(--rose-soft); color: var(--rose); }
+.acts { display: grid; gap: 10px; counter-reset: a; }
+.act { padding: 13px 16px 13px 50px; position: relative; counter-increment: a; }
+.act::before { content: counter(a, decimal-leading-zero); position: absolute; left: 16px; top: 13px; font-family: var(--mono); font-size: 13px; color: var(--rose); }
+.act.urgent { background: var(--amber-soft); border-color: transparent; }
+.act p, .fnd p { color: var(--ink-2); font-size: 14.5px; }
+.fnds { overflow: hidden; }
+.fnd { padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.fnd:last-child { border-bottom: none; }
+.fnd .hd { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.fnd .hd b { font-weight: 600; }
+.fnd .src { font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+.fnd .src a { color: var(--muted); }
+.lnote { font-size: 13.5px; color: var(--muted); max-width: 72ch; }
+.lsec { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 130px; }
 .err { background: var(--red-soft); color: var(--red); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; }
 footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; font-size: 12.5px; color: var(--muted); display: flex; gap: 6px 16px; flex-wrap: wrap; }
 @media (max-width: 600px) { .top-inner, main, footer { padding-left: 16px; padding-right: 16px; } .brand h1 { font-size: 1.25rem; } }
@@ -260,6 +281,7 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; font-size: 12.
       <a href="#vendors" data-view="vendors" data-i18n="nav.vendors"></a>
       <a href="#day" data-view="day" data-i18n="nav.day"></a>
       <a href="#venue" data-view="venue" data-i18n="nav.venue"></a>
+      <a href="#lessons" data-view="lessons" data-i18n="nav.lessons"></a>
     </nav>
   </div>
 </header>
@@ -393,6 +415,16 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; font-size: 12.
       </table></div>
     </div>
   </section>
+  <!-- LESSONS -->
+  <section class="view" id="view-lessons" hidden>
+    <div class="block">
+      <h2 data-i18n="h.lessons"></h2>
+      <p class="lede" id="lessons-intro"></p>
+      <div class="key" id="lessons-key"></div>
+      <div class="pills" id="lessons-jump"></div>
+    </div>
+    <div id="lessons-body" class="view"></div>
+  </section>
 </main>
 
 <footer>
@@ -400,6 +432,7 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; font-size: 12.
   <span data-i18n="foot"></span>
 </footer>
 
+<script src="lessons.js"></script>
 <script>
 const HUB_URL = 'https://app.notion.com/p/3a94312b32bb81bb8529f29251aded1c';
 const TASKS_URL = 'https://app.notion.com/p/fdb8441d07b546f086d0ac978d067279';
@@ -411,7 +444,7 @@ const TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
 const L = {
   en: {
     sub: 'Friday, May 21, 2027 · Hempstead House, Sands Point · 230 guests',
-    'nav.today': 'Today', 'nav.plan': 'Plan', 'nav.money': 'Money', 'nav.vendors': 'Vendors', 'nav.day': 'The Day', 'nav.venue': 'Venue',
+    'nav.today': 'Today', 'nav.plan': 'Plan', 'nav.money': 'Money', 'nav.vendors': 'Vendors', 'nav.day': 'The Day', 'nav.venue': 'Venue', 'nav.lessons': 'Lessons', 'h.lessons': 'What real couples learned', 'lessons.missing': 'The research notes could not be loaded.',
     theme: 'Theme', 'theme.auto': 'Auto', 'theme.light': 'Light', 'theme.dark': 'Dark',
     daysToGo: n => n.toLocaleString() + ' days to go', married: 'Married!',
     loading: 'Loading tasks…',
@@ -460,7 +493,7 @@ const L = {
   },
   zh: {
     sub: '2027年5月21日（周五）· Hempstead House, Sands Point · 230位宾客',
-    'nav.today': '今日', 'nav.plan': '计划', 'nav.money': '费用', 'nav.vendors': '供应商', 'nav.day': '婚礼当天', 'nav.venue': '场地',
+    'nav.today': '今日', 'nav.plan': '计划', 'nav.money': '费用', 'nav.vendors': '供应商', 'nav.day': '婚礼当天', 'nav.venue': '场地', 'nav.lessons': '经验', 'h.lessons': '过来人的经验', 'lessons.missing': '研究笔记加载失败。',
     theme: '主题', 'theme.auto': '自动', 'theme.light': '浅色', 'theme.dark': '深色',
     daysToGo: n => '还有 ' + n + ' 天', married: '新婚快乐！',
     loading: '正在加载…',
@@ -920,13 +953,46 @@ function renderStatic() {
   applyTheme();
 }
 function renderAll() {
-  renderStatic(); renderPayments(); renderBudget();
+  renderStatic(); renderPayments(); renderBudget(); renderLessons();
   renderToday(); renderTeam('#team-mini', true); renderTeam('#team-full', false); renderShortlist();
   if (location.hash === '#plan') renderPlan();
 }
 
+/* ---------------- LESSONS ---------------- */
+function renderLessons() {
+  const D = window.LESSONS;
+  if (!D) { $('#lessons-body').innerHTML = `<div class="err">${t('lessons.missing')}</div>`; return; }
+  const tagCls = { c: 'c', s: 's', 1: 'n1', o: 'o' };
+  const tag = k => `<span class="ltag ${tagCls[k]}">${esc(pick(D.tags[k]))}</span>`;
+  $('#lessons-intro').textContent = pick(D.intro);
+  $('#lessons-key').innerHTML = ['c', 's', '1', 'o'].map(k => tag(k)).join(' ');
+  const secs = [{ id: 'l-actions', title: D.actions.title }].concat(D.sections.map(x => ({ id: 'l-' + x.id, title: x.title })));
+  $('#lessons-jump').innerHTML = secs.map(x => `<a class="pill" href="#lessons" data-jump="${x.id}">${esc(pick(x.title))}</a>`).join('');
+  const table = tb => `<div class="card table-wrap"><table><thead><tr>${tb.head.map(h => `<th>${esc(pick(h))}</th>`).join('')}</tr></thead><tbody>${tb.rows.map(r => `<tr>${r.map(c => `<td>${esc(pick(c))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${tb.note ? `<p class="lnote">${esc(pick(tb.note))}</p>` : ''}`;
+  let html = `<div class="lsec" id="l-actions"><h2>${esc(pick(D.actions.title))}</h2><p class="small">${esc(pick(D.actions.note))}</p>
+    <div class="acts">${D.actions.items.map(a => `<div class="card act${a.urgent ? ' urgent' : ''}"><h3>${esc(pick(a.h))}</h3><p>${esc(pick(a.p))}</p></div>`).join('')}</div></div>`;
+  D.sections.forEach(sec => {
+    html += `<div class="lsec" id="l-${sec.id}"><h2>${esc(pick(sec.title))}</h2>`;
+    if (sec.table) html += table(sec.table);
+    html += `<div class="card fnds">${sec.items.map(f => `<div class="fnd"><div class="hd">${tag(f.t)}<b>${esc(pick(f.h))}</b></div><p>${esc(pick(f.p))}</p>${f.src ? `<span class="src">${f.src}</span>` : ''}</div>`).join('')}</div>`;
+    if (sec.box) html += `<div class="card box"><h3>${esc(pick(sec.box.h))}</h3><ul>${sec.box.li.map(x => `<li>${esc(pick(x))}</li>`).join('')}</ul></div>`;
+    if (sec.note) html += `<p class="lnote">${esc(pick(sec.note))}</p>`;
+    html += `</div>`;
+  });
+  const lim = D.limits;
+  html += `<div class="lsec"><h2>${esc(pick(lim.title))}</h2><p class="lnote">${esc(pick(lim.p))}</p>
+    <div class="card box"><h3>${esc(pick(lim.searchTitle))}</h3><ul class="zh">${lim.searches.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>`;
+  $('#lessons-body').innerHTML = html;
+  document.querySelectorAll('#lessons-jump [data-jump]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(a.dataset.jump);
+    if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - $('.top').offsetHeight - 12);
+  }));
+  document.querySelectorAll('#lessons-body .src a').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+}
+
 /* ---------------- router ---------------- */
-const VIEWS = ['today', 'plan', 'money', 'vendors', 'day', 'venue'];
+const VIEWS = ['today', 'plan', 'money', 'vendors', 'day', 'venue', 'lessons'];
 function route() {
   let v = location.hash.replace('#', '');
   if (!VIEWS.includes(v)) v = 'today';
