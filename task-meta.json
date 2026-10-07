@@ -1,381 +1,615 @@
 {
- "note": "Workstream and hard-date fallback for tasks.json until the Notion sync workflow pulls those fields itself.",
+ "note": "Per-task Chinese name and notes, plus Workstream and Hard date until the Notion sync pulls those fields itself. Keyed by Notion page id.",
  "tasks": {
-  "3a94312b32bb8106afc9c6e635c40dff": {
-   "workstream": "Ceremony & legal",
-   "hard": false
-  },
-  "3a94312b32bb8113be6bf2394d78e833": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3a94312b32bb811bafc0caecfb4b8807": {
-   "workstream": "Traditions",
-   "hard": false
-  },
-  "3a94312b32bb811bbbe0fa4f8cc46ccb": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3a94312b32bb812bb9f6fe64265f4069": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81379dbbf3cc2bea8247": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3a94312b32bb813a9fa5cf54fc080e57": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb813fbf7ccdb713e8232d": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb8149a511cfbb46e77640": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb8150b4f3ef66a3bda4fe": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb8159b050db65eedcd5e2": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81609cd1ec6a7276f9a0": {
-   "workstream": "Day-of",
-   "hard": false
-  },
-  "3a94312b32bb816cab8aeb308b15cee4": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb816fa0f5f153f205ec2e": {
+  "3f24312b32bb81068ab7fa83006f6ff4": {
    "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81798aa7dc8e9678ef26": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3a94312b32bb8179b968e90ad3da3602": {
-   "workstream": "Day-of",
-   "hard": false
-  },
-  "3a94312b32bb81829f82e3af09c71765": {
-   "workstream": "Day-of",
-   "hard": false
-  },
-  "3a94312b32bb8188b160ccd8d5343a68": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb8192a943de415e32ffc2": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb8197bd89dfe6ff7f6224": {
-   "workstream": "People & roles",
-   "hard": false
-  },
-  "3a94312b32bb8198a3cbe4283fcb621d": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb819b90d6dcec57ec5d87": {
-   "workstream": "Food",
-   "hard": false
-  },
-  "3a94312b32bb819d9f98fd99425466f8": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81a09290fbdfcaac0433": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81a3aae4f4f4a77d8716": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81acbb50f2a80efa73de": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81af8a60c6896a9bccdf": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81b3b4c3e31b77caacee": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81b8a5b0f2d2c05af072": {
-   "workstream": "Food",
-   "hard": true
-  },
-  "3a94312b32bb81ca92bbcf3991d19379": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3a94312b32bb81ce86e5d57e6a9d0765": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3a94312b32bb81ce97d4c5d16396b617": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3a94312b32bb81d3a288d5d401500574": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3a94312b32bb81d79430eaa2d3068fe2": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81d8916ec0994985d4d2": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81d98f17c3ff6a0f7c08": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81ebaae4cb37e43eb135": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81ebab6aff0ff0cfe30b": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3a94312b32bb81f09cc0eddccff7a988": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81f2b79cce64b3d98e6d": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3a94312b32bb81fdbaeed3af5de509c1": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81fdbddbdd1dc096d744": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3a94312b32bb81ff9650c0f8d5ba6932": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb8161b85dd76c3f69470e": {
-   "workstream": "Vision",
-   "hard": false
-  },
-  "3f24312b32bb819abc7fe09dba49c77d": {
-   "workstream": "Vision",
-   "hard": false
-  },
-  "3f24312b32bb816e8ba6ee91bd0c682b": {
-   "workstream": "Budget",
-   "hard": false
-  },
-  "3f24312b32bb818f9957ed08a96b8046": {
-   "workstream": "Budget",
-   "hard": false
-  },
-  "3f24312b32bb81adbf51f2c81b052526": {
-   "workstream": "Budget",
-   "hard": false
-  },
-  "3f24312b32bb8153821aff3349bfef31": {
-   "workstream": "Budget",
-   "hard": true
-  },
-  "3f24312b32bb81f2a38ac971b686e54d": {
-   "workstream": "Budget",
-   "hard": true
-  },
-  "3f24312b32bb81ebbb84e962ab76ec81": {
-   "workstream": "Budget",
-   "hard": true
-  },
-  "3f24312b32bb816f9f36e20ab4ab48ff": {
-   "workstream": "Budget",
-   "hard": false
-  },
-  "3f24312b32bb81c088c7c6a1715b1f65": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb81e59c37cf33123276e5": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb81c3897ee2ae91c4eb61": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb81a6be26c201a0145517": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb817e89afe3295281462a": {
-   "workstream": "Guests",
-   "hard": false
-  },
-  "3f24312b32bb81e58df6e045341390ff": {
-   "workstream": "Guests",
-   "hard": true
-  },
-  "3f24312b32bb81f0899bd8e2cacdee18": {
-   "workstream": "Guests",
-   "hard": true
-  },
-  "3f24312b32bb81fc88f4e98756cc4f1d": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb8188b105ebf9264752d4": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb817e84aef47fa50b3182": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb81c98f54c466c0ae88a7": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb81ff860fe3282a5cf8be": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb813c9c3ced8165971960": {
-   "workstream": "Venue",
-   "hard": false
-  },
-  "3f24312b32bb812d8c20f4b3a7e47f29": {
-   "workstream": "Venue",
-   "hard": true
-  },
-  "3f24312b32bb814fb5f1cecf87b76b2b": {
-   "workstream": "Food",
-   "hard": false
-  },
-  "3f24312b32bb812990b6c967b0f14283": {
-   "workstream": "Food",
-   "hard": false
-  },
-  "3f24312b32bb812c85f3c011ed824910": {
-   "workstream": "Ceremony & legal",
-   "hard": false
-  },
-  "3f24312b32bb81ab9345f9338820cd24": {
-   "workstream": "Ceremony & legal",
-   "hard": false
-  },
-  "3f24312b32bb81aa9c4eca39e4107199": {
-   "workstream": "Ceremony & legal",
-   "hard": false
-  },
-  "3f24312b32bb8184944ef89ff71f4720": {
-   "workstream": "Ceremony & legal",
-   "hard": true
-  },
-  "3f24312b32bb81999dd1e51a68573b94": {
-   "workstream": "Traditions",
-   "hard": false
-  },
-  "3f24312b32bb81a4b09ec5b08ded4841": {
-   "workstream": "Traditions",
-   "hard": false
-  },
-  "3f24312b32bb81dca717da5c6fa9bc36": {
-   "workstream": "Traditions",
-   "hard": false
-  },
-  "3f24312b32bb8117b025e509c4138741": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3f24312b32bb81bfa3dcdc21526a59b5": {
-   "workstream": "Vendors",
-   "hard": false
-  },
-  "3f24312b32bb815e8a87efa8536027cc": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3f24312b32bb814bb1e4c1ff6be55141": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3f24312b32bb816a82eed270e116dc94": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3f24312b32bb81dcae7bca1bbdb32f5b": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3f24312b32bb817fa8d1ec3c596bcf25": {
-   "workstream": "Attire & beauty",
-   "hard": false
-  },
-  "3f24312b32bb815d8cefda545dc39134": {
-   "workstream": "People & roles",
-   "hard": false
-  },
-  "3f24312b32bb81cf8abcc435a447fcf3": {
-   "workstream": "People & roles",
-   "hard": false
-  },
-  "3f24312b32bb812995dcdd20f115d22e": {
-   "workstream": "People & roles",
-   "hard": false
+   "hard": true,
+   "zh": "购买活动责任险：200万美元，开三张保险凭证",
+   "zhNotes": "附加被保人：The Sands Point Preserve Conservancy、County of Nassau、Village of Sands Point。按合同须在活动前14个工作日（5月3日）交，Exhibit C 写的是5月7日。"
   },
   "3f24312b32bb810b8e56c27f58ee818b": {
    "workstream": "People & roles",
-   "hard": false
-  },
-  "3f24312b32bb81d28976cb17ff8441cc": {
-   "workstream": "People & roles",
-   "hard": false
-  },
-  "3f24312b32bb817aa9bae3bf00d9e37e": {
-   "workstream": "Day-of",
-   "hard": false
-  },
-  "3f24312b32bb816cb6a5cb7df38bca25": {
-   "workstream": "Day-of",
-   "hard": false
-  },
-  "3f24312b32bb81068ab7fa83006f6ff4": {
-   "workstream": "Admin & after",
-   "hard": true
-  },
-  "3f24312b32bb81e68e04df819dd4085a": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3f24312b32bb81c79930e8646cd8e081": {
-   "workstream": "Admin & after",
-   "hard": false
-  },
-  "3f24312b32bb81d2b09ceb18b8c36e8c": {
-   "workstream": "Admin & after",
-   "hard": false
+   "hard": false,
+   "zh": "安排当天负责人（红包、小费、照顾长辈、撤场）"
   },
   "3f24312b32bb810f9cbfc89390e9efd7": {
    "workstream": "Admin & after",
-   "hard": false
+   "hard": false,
+   "zh": "寄出感谢卡"
+  },
+  "3f24312b32bb8117b025e509c4138741": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "选定喜帖设计和国内印刷厂",
+   "zhNotes": "出发前拿到报价、工期和电子稿，第一周就能开印。"
+  },
+  "3f24312b32bb812990b6c967b0f14283": {
+   "workstream": "Food",
+   "hard": false,
+   "zh": "订蛋糕（先确认能否自带）"
+  },
+  "3f24312b32bb812995dcdd20f115d22e": {
+   "workstream": "People & roles",
+   "hard": false,
+   "zh": "致辞安排：谁讲、用什么语言、讲多久"
+  },
+  "3f24312b32bb812c85f3c011ed824910": {
+   "workstream": "Ceremony & legal",
+   "hard": false,
+   "zh": "确定证婚人并完成登记"
+  },
+  "3f24312b32bb812d8c20f4b3a7e47f29": {
+   "workstream": "Venue",
+   "hard": true,
+   "zh": "撤场：周六上午10点前清走租赁物品和个人物品",
+   "zhNotes": "垃圾须在结束后2小时内清走，其余物品11小时内撤完。"
+  },
+  "3f24312b32bb813c9c3ced8165971960": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "代客泊车报价（Prime Valet）"
+  },
+  "3f24312b32bb814bb1e4c1ff6be55141": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "在苏州订新郎西装",
+   "zhNotes": "定制西装至少要试一次身。尽早预约，确保两周内能完成试穿。"
+  },
+  "3f24312b32bb814fb5f1cecf87b76b2b": {
+   "workstream": "Food",
+   "hard": false,
+   "zh": "餐饮试菜",
+   "zhNotes": "需另付费。"
+  },
+  "3f24312b32bb8153821aff3349bfef31": {
+   "workstream": "Budget",
+   "hard": true,
+   "zh": "支付餐饮第二笔25%",
+   "zhNotes": "活动前120天到期。按合同总额的25%计（按150人合同约 $15,561；若改为230人会更高）。"
+  },
+  "3f24312b32bb815d8cefda545dc39134": {
+   "workstream": "People & roles",
+   "hard": false,
+   "zh": "确定伴郎伴娘人选",
+   "zhNotes": "已提前：去中国前需要拿到他们的尺码。"
+  },
+  "3f24312b32bb815e8a87efa8536027cc": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "在苏州订敬茶礼服（旗袍／裙褂／秀禾服）",
+   "zhNotes": "第二套造型和敬酒时也穿。颜色要和婚礼主色调一致。"
+  },
+  "3f24312b32bb8161b85dd76c3f69470e": {
+   "workstream": "Vision",
+   "hard": false,
+   "zh": "各自列出最看重的三件事"
+  },
+  "3f24312b32bb816a82eed270e116dc94": {
+   "workstream": "Attire & beauty",
+   "hard": false,
+   "zh": "试妆"
+  },
+  "3f24312b32bb816cb6a5cb7df38bca25": {
+   "workstream": "Day-of",
+   "hard": false,
+   "zh": "把联系人表和场地平面图发给所有供应商"
+  },
+  "3f24312b32bb816e8ba6ee91bd0c682b": {
+   "workstream": "Budget",
+   "hard": false,
+   "zh": "定下总预算和双方家庭出资"
+  },
+  "3f24312b32bb816f9f36e20ab4ab48ff": {
+   "workstream": "Budget",
+   "hard": false,
+   "zh": "准备现金信封：警察费用和供应商小费",
+   "zhNotes": "两名 Sands Point 警察，每小时 $125，当晚现金支付（约 $1,750）。20% 的行政费不是小费。"
+  },
+  "3f24312b32bb817aa9bae3bf00d9e37e": {
+   "workstream": "Day-of",
+   "hard": false,
+   "zh": "拍摄清单（双方家人合影）"
+  },
+  "3f24312b32bb817e84aef47fa50b3182": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "书面确认230人的雨天方案"
+  },
+  "3f24312b32bb817e89afe3295281462a": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "给海外亲属寄签证邀请函",
+   "zhNotes": "美国领事馆面签可能要排几个月。"
+  },
+  "3f24312b32bb817fa8d1ec3c596bcf25": {
+   "workstream": "Attire & beauty",
+   "hard": false,
+   "zh": "最后一次试穿"
+  },
+  "3f24312b32bb8184944ef89ff71f4720": {
+   "workstream": "Ceremony & legal",
+   "hard": true,
+   "zh": "领结婚证（Nassau County Clerk，Mineola）",
+   "zhNotes": "有效期60天，领证24小时后才能举行仪式。3月22日起可领。带身份证件和 $40。"
+  },
+  "3f24312b32bb8188b105ebf9264752d4": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "把餐饮合同人数改为230人",
+   "zhNotes": "合同保底150人。保底是最低人数，和 Emily 商量现在改还是到最终确认人数时再改。"
+  },
+  "3f24312b32bb818f9957ed08a96b8046": {
+   "workstream": "Budget",
+   "hard": false,
+   "zh": "做分项预算，留10%备用金"
+  },
+  "3f24312b32bb81999dd1e51a68573b94": {
+   "workstream": "Traditions",
+   "hard": false,
+   "zh": "家庭会议：办哪些礼俗、按谁家的习惯、谁来主持"
+  },
+  "3f24312b32bb819abc7fe09dba49c77d": {
+   "workstream": "Vision",
+   "hard": false,
+   "zh": "做灵感板，用几个词描述婚礼氛围"
+  },
+  "3f24312b32bb81a4b09ec5b08ded4841": {
+   "workstream": "Traditions",
+   "hard": false,
+   "zh": "敬茶安排：茶具、长辈顺序、红包"
+  },
+  "3f24312b32bb81a6be26c201a0145517": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "询价 Flushing 接驳巴士",
+   "zhNotes": "周五下午5点 LIE 和 Northern State 很堵，长辈尤其需要。"
+  },
+  "3f24312b32bb81aa9c4eca39e4107199": {
+   "workstream": "Ceremony & legal",
+   "hard": false,
+   "zh": "仪式流程、誓词、致辞朗读、入场顺序"
+  },
+  "3f24312b32bb81ab9345f9338820cd24": {
+   "workstream": "Ceremony & legal",
+   "hard": false,
+   "zh": "买婚戒"
+  },
+  "3f24312b32bb81adbf51f2c81b052526": {
+   "workstream": "Budget",
+   "hard": false,
+   "zh": "书面确认7月17日的两笔定金（场地 $6,000、餐饮 $15,561）"
+  },
+  "3f24312b32bb81bfa3dcdc21526a59b5": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "预订用车（婚车和宾客接驳）"
+  },
+  "3f24312b32bb81c088c7c6a1715b1f65": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "收集230位宾客的邮寄地址"
+  },
+  "3f24312b32bb81c3897ee2ae91c4eb61": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "在 Port Washington／Great Neck 附近订酒店团房"
+  },
+  "3f24312b32bb81c79930e8646cd8e081": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "把配偶加入医疗保险（婚姻属于特殊投保事件）"
+  },
+  "3f24312b32bb81c98f54c466c0ae88a7": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "Party Rental Ltd 报价（椅子、桌布、餐具）",
+   "zhNotes": "必须使用，每位宾客约 $100 起。"
+  },
+  "3f24312b32bb81cf8abcc435a447fcf3": {
+   "workstream": "People & roles",
+   "hard": false,
+   "zh": "预订彩排晚宴"
+  },
+  "3f24312b32bb81d28976cb17ff8441cc": {
+   "workstream": "People & roles",
+   "hard": false,
+   "zh": "找人主持5月21日周五的 FNH"
+  },
+  "3f24312b32bb81d2b09ceb18b8c36e8c": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "收回场地押金",
+   "zhNotes": "5个工作日内退还，扣除损坏费用。"
+  },
+  "3f24312b32bb81dca717da5c6fa9bc36": {
+   "workstream": "Traditions",
+   "hard": false,
+   "zh": "过大礼"
+  },
+  "3f24312b32bb81dcae7bca1bbdb32f5b": {
+   "workstream": "Attire & beauty",
+   "hard": false,
+   "zh": "婚纱第一次试穿"
+  },
+  "3f24312b32bb81e58df6e045341390ff": {
+   "workstream": "Guests",
+   "hard": true,
+   "zh": "回复截止（含主菜选择）"
+  },
+  "3f24312b32bb81e59c37cf33123276e5": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "婚礼网站上线（信息、酒店、回复）"
+  },
+  "3f24312b32bb81e68e04df819dd4085a": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "申请结婚证书公证副本"
+  },
+  "3f24312b32bb81ebbb84e962ab76ec81": {
+   "workstream": "Budget",
+   "hard": true,
+   "zh": "支付餐饮尾款并签最终人数",
+   "zhNotes": "活动前5天，现金或保付支票。按230人计算，扣除两笔定金后约 $64,000。"
+  },
+  "3f24312b32bb81f0899bd8e2cacdee18": {
+   "workstream": "Guests",
+   "hard": true,
+   "zh": "向 Philip Stone 确认最终人数",
+   "zhNotes": "活动前8天。这个数字就是新的保底人数。"
+  },
+  "3f24312b32bb81f2a38ac971b686e54d": {
+   "workstream": "Budget",
+   "hard": true,
+   "zh": "场地尾款 $6,000 和押金 $5,000（本票）",
+   "zhNotes": "收款方 The Sands Point Preserve Conservancy, Inc.，见合同 Exhibit C。"
+  },
+  "3f24312b32bb81fc88f4e98756cc4f1d": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "给 Emily 发邮件：雨天方案、帐篷、脚手架、合同更正、230人平面图",
+   "zhNotes": "完整问题清单在网站「场地」页。"
+  },
+  "3f24312b32bb81ff860fe3282a5cf8be": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "Fusion Lighting 报价",
+   "zhNotes": "场地指定的唯一周边灯光供应商。"
+  },
+  "3a94312b32bb8106afc9c6e635c40dff": {
+   "workstream": "Ceremony & legal",
+   "hard": false,
+   "zh": "确定仪式音乐和证婚人"
+  },
+  "3a94312b32bb8113be6bf2394d78e833": {
+   "workstream": "Attire & beauty",
+   "hard": false,
+   "zh": "预订化妆造型师"
+  },
+  "3a94312b32bb811bafc0caecfb4b8807": {
+   "workstream": "Traditions",
+   "hard": false,
+   "zh": "决定中式环节（敬茶？旗袍？中式宴席？）"
+  },
+  "3a94312b32bb811bbbe0fa4f8cc46ccb": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "发出预告卡（Save the Date）"
+  },
+  "3a94312b32bb812bb9f6fe64265f4069": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "从候选名单里筛选摄像师"
+  },
+  "3a94312b32bb81379dbbf3cc2bea8247": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "列出完整宾客名单"
+  },
+  "3a94312b32bb813a9fa5cf54fc080e57": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "从候选名单里选出3到5位摄影师"
+  },
+  "3a94312b32bb813fbf7ccdb713e8232d": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "花艺缩小到2到3家"
+  },
+  "3a94312b32bb8149a511cfbb46e77640": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "和有回复的摄影师约电话"
+  },
+  "3a94312b32bb8150b4f3ef66a3bda4fe": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "和花艺师定设计方案（配色、吊顶、拱门）"
+  },
+  "3a94312b32bb8159b050db65eedcd5e2": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "调研婚礼当天统筹（$1.5k–4k）",
+   "zhNotes": "230人加敬茶环节，建议请半程策划，而不只是当月统筹。两种都比较一下。"
+  },
+  "3a94312b32bb81609cd1ec6a7276f9a0": {
+   "workstream": "Day-of",
+   "hard": false,
+   "zh": "和统筹一起起草当天流程"
+  },
+  "3a94312b32bb816cab8aeb308b15cee4": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "签约摄影师"
+  },
+  "3a94312b32bb816fa0f5f153f205ec2e": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "向亚洲媒体投稿（Harper's Bazaar China 等）"
+  },
+  "3a94312b32bb81798aa7dc8e9678ef26": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "把所有供应商名单交 Sands Point Preserve 审批（第17条）"
+  },
+  "3a94312b32bb8179b968e90ad3da3602": {
+   "workstream": "Day-of",
+   "hard": false,
+   "zh": "收拾随身物品（誓词、戒指、致辞稿、应急包）"
+  },
+  "3a94312b32bb81829f82e3af09c71765": {
+   "workstream": "Day-of",
+   "hard": false,
+   "zh": "当天流程定稿并发给所有供应商"
+  },
+  "3a94312b32bb8188b160ccd8d5343a68": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "签约DJ或乐队",
+   "zhNotes": "需要中英双语主持人。"
+  },
+  "3a94312b32bb8192a943de415e32ffc2": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "花艺最终确认，签好送货时间表"
+  },
+  "3a94312b32bb8197bd89dfe6ff7f6224": {
+   "workstream": "People & roles",
+   "hard": false,
+   "zh": "婚礼彩排",
+   "zhNotes": "场地合同只包含5月21日当天。问 Emily 周四能否在场地彩排。"
+  },
+  "3a94312b32bb8198a3cbe4283fcb621d": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "收到婚礼视频成片"
+  },
+  "3a94312b32bb819b90d6dcec57ec5d87": {
+   "workstream": "Food",
+   "hard": false,
+   "zh": "开始询价餐饮",
+   "zhNotes": "已签 Philip Stone Caterers（合同日期2026年7月9日）。"
+  },
+  "3a94312b32bb819d9f98fd99425466f8": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "联系摄像师（Claude 发邮件）"
+  },
+  "3a94312b32bb81a09290fbdfcaac0433": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "收到摄影精选预览"
+  },
+  "3a94312b32bb81a3aae4f4f4a77d8716": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "纸品：菜单、座位卡、指示牌"
+  },
+  "3a94312b32bb81acbb50f2a80efa73de": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "联系入围摄影师（Claude 用 Gmail 发）"
+  },
+  "3a94312b32bb81af8a60c6896a9bccdf": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "签约摄像师"
+  },
+  "3a94312b32bb81b3b4c3e31b77caacee": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "给第一梯队花艺商发询价邮件"
+  },
+  "3a94312b32bb81b8a5b0f2d2c05af072": {
+   "workstream": "Food",
+   "hard": true,
+   "zh": "向 Philip Stone 提交最终菜单",
+   "zhNotes": "合同已于2026年7月签署。菜单须在活动前一个月定稿。"
+  },
+  "3a94312b32bb81ca92bbcf3991d19379": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "和统筹及主要供应商最后一次踩场"
+  },
+  "3a94312b32bb81ce86e5d57e6a9d0765": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "寄出正式请柬",
+   "zhNotes": "回复卡上加主菜选择，4月16日截止回复。"
+  },
+  "3a94312b32bb81ce97d4c5d16396b617": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "在苏州虎丘婚纱城买婚纱",
+   "zhNotes": "成衣或定制都可以。定制一般要2到3个月，提前谈好邮寄方式和最后由谁修改。带上婚礼当天要穿的鞋，或记好鞋跟高度。"
+  },
+  "3a94312b32bb81d3a288d5d401500574": {
+   "workstream": "Venue",
+   "hard": false,
+   "zh": "确定桌位布局和座位草图",
+   "zhNotes": "230人已接近250人的上限。先拿到 Emily 带舞池的平面图。"
+  },
+  "3a94312b32bb81d79430eaa2d3068fe2": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "撰写投稿故事（以 editorial-vision.md 为底稿）"
+  },
+  "3a94312b32bb81d8916ec0994985d4d2": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "摄影师向一线媒体投稿"
+  },
+  "3a94312b32bb81d98f17c3ff6a0f7c08": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "签约婚礼策划（半程策划）或当天统筹"
+  },
+  "3a94312b32bb81ebaae4cb37e43eb135": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "签约花艺布置"
+  },
+  "3a94312b32bb81ebab6aff0ff0cfe30b": {
+   "workstream": "Vendors",
+   "hard": false,
+   "zh": "跟进花艺询价并约电话"
+  },
+  "3a94312b32bb81f09cc0eddccff7a988": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "收到全部照片"
+  },
+  "3a94312b32bb81f2b79cce64b3d98e6d": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "和家人确认宾客人数",
+   "zhNotes": "230人（2026年10月6日）。餐饮合同仍是150人保底，需要和 Emily 更新。"
+  },
+  "3a94312b32bb81fdbaeed3af5de509c1": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "挑选60到80张投稿照片"
+  },
+  "3a94312b32bb81fdbddbdd1dc096d744": {
+   "workstream": "Admin & after",
+   "hard": false,
+   "zh": "收齐供应商保险凭证（$1M，被保人含 Philip Stone）",
+   "zhNotes": "每家供应商都要提供100万美元、列 Philip Stone Caterers 为附加被保人的凭证。你们自己的200万保险是另一项任务。"
+  },
+  "3a94312b32bb81ff9650c0f8d5ba6932": {
+   "workstream": "Guests",
+   "hard": false,
+   "zh": "座位表定稿"
+  },
+  "3f24312b32bb81679ef9c7abad24fc94": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "定下婚礼配色和风格，国内定制的东西才能统一",
+   "zhNotes": "请柬、红包、旗袍、伴娘服和指示牌都要用同一套颜色。带上色卡。"
+  },
+  "3f24312b32bb8112b286f0de4680e218": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "两人都找专业量体，记好尺寸"
+  },
+  "3f24312b32bb81bea5f2c99d3749458e": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "请柬中英文文案定稿",
+   "zhNotes": "中英文姓名、阳历和农历日期、Hempstead House、下午5点入场、4月16日前通过网站或二维码回复。"
+  },
+  "3f24312b32bb81e2a0f1cf5fa873f679": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "算请柬数量：230位宾客按户计，多备10%"
+  },
+  "3f24312b32bb819d8507d64c010352db": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "安排苏州行程：预约婚纱店和西装裁缝",
+   "zhNotes": "行程前段先去苏州，留出西装试身和婚纱修改的时间。带参考图和鞋子。"
+  },
+  "3f24312b32bb8191b19ccb2832da692d": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "收集伴郎伴娘和两位妈妈的尺码"
+  },
+  "3f24312b32bb81ff8929d05da2759830": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "查清美国进口关税和行李限额",
+   "zhNotes": "纸品很重，150套请柬可能超过10公斤。决定手提、托运还是寄回。"
+  },
+  "3f24312b32bb815ebc9dd28ef91ddf80": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "列采购清单，写明数量和预算"
+  },
+  "3f24312b32bb81a080e9cd493cddc517": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "请柬套装确认打样并印刷（请柬、信封、回复卡）",
+   "zhNotes": "第一周下单，回美国前取货。3月19日前在美国寄出。"
+  },
+  "3f24312b32bb8171b502d5bb36ba3686": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "指示牌、桌号牌和签到本（和请柬一起印）",
+   "zhNotes": "座位卡留空或回美国再印，座位要到5月才定。"
+  },
+  "3f24312b32bb8131b89fd242b38b69a8": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "伴娘礼服和伴郎领带或西装"
+  },
+  "3f24312b32bb815684b3ca1d174ce148": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "两位妈妈的旗袍"
+  },
+  "3f24312b32bb81afb91feb3e65115850": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "敬茶茶具"
+  },
+  "3f24312b32bb812f9ffbd364e9ce99ee": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "定制红包和喜字装饰",
+   "zhNotes": "红包用于敬茶和堵门。只用纸质喜字，场地不允许蜡烛和明火。"
+  },
+  "3f24312b32bb81d08d88fe326368a4b9": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "230份喜糖盒（回美国再装）"
+  },
+  "3f24312b32bb8121b2fec91f98333333": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "新娘金饰（如双方家庭需要）",
+   "zhNotes": "比如龙凤镯。先问两边家里的意见。"
+  },
+  "3f24312b32bb81039dcac2f9ce772bab": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "可选：在苏州拍婚纱照",
+   "zhNotes": "照片也可以用在预告卡和婚礼网站上。"
+  },
+  "3f24312b32bb815eaafbc0d0e16218d0": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "把所有东西带回或寄回，保留报关收据"
+  },
+  "3f24312b32bb81dbb547fd6440dcf7d3": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "行程后才做好的物品：跟踪物流，1月31日前到手"
+  },
+  "3f24312b32bb81f18c37e39c129347a4": {
+   "workstream": "China orders",
+   "hard": false,
+   "zh": "在美国找裁缝修改婚纱和西装",
+   "zhNotes": "3月第一次试穿，5月最后一次。"
   }
  }
 }
