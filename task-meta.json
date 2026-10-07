@@ -1,0 +1,381 @@
+{
+ "note": "Workstream and hard-date fallback for tasks.json until the Notion sync workflow pulls those fields itself.",
+ "tasks": {
+  "3a94312b32bb8106afc9c6e635c40dff": {
+   "workstream": "Ceremony & legal",
+   "hard": false
+  },
+  "3a94312b32bb8113be6bf2394d78e833": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3a94312b32bb811bafc0caecfb4b8807": {
+   "workstream": "Traditions",
+   "hard": false
+  },
+  "3a94312b32bb811bbbe0fa4f8cc46ccb": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3a94312b32bb812bb9f6fe64265f4069": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81379dbbf3cc2bea8247": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3a94312b32bb813a9fa5cf54fc080e57": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb813fbf7ccdb713e8232d": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb8149a511cfbb46e77640": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb8150b4f3ef66a3bda4fe": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb8159b050db65eedcd5e2": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81609cd1ec6a7276f9a0": {
+   "workstream": "Day-of",
+   "hard": false
+  },
+  "3a94312b32bb816cab8aeb308b15cee4": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb816fa0f5f153f205ec2e": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81798aa7dc8e9678ef26": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3a94312b32bb8179b968e90ad3da3602": {
+   "workstream": "Day-of",
+   "hard": false
+  },
+  "3a94312b32bb81829f82e3af09c71765": {
+   "workstream": "Day-of",
+   "hard": false
+  },
+  "3a94312b32bb8188b160ccd8d5343a68": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb8192a943de415e32ffc2": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb8197bd89dfe6ff7f6224": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3a94312b32bb8198a3cbe4283fcb621d": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb819b90d6dcec57ec5d87": {
+   "workstream": "Food",
+   "hard": false
+  },
+  "3a94312b32bb819d9f98fd99425466f8": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81a09290fbdfcaac0433": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81a3aae4f4f4a77d8716": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81acbb50f2a80efa73de": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81af8a60c6896a9bccdf": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81b3b4c3e31b77caacee": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81b8a5b0f2d2c05af072": {
+   "workstream": "Food",
+   "hard": true
+  },
+  "3a94312b32bb81ca92bbcf3991d19379": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3a94312b32bb81ce86e5d57e6a9d0765": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3a94312b32bb81ce97d4c5d16396b617": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3a94312b32bb81d3a288d5d401500574": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3a94312b32bb81d79430eaa2d3068fe2": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81d8916ec0994985d4d2": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81d98f17c3ff6a0f7c08": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81ebaae4cb37e43eb135": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81ebab6aff0ff0cfe30b": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3a94312b32bb81f09cc0eddccff7a988": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81f2b79cce64b3d98e6d": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3a94312b32bb81fdbaeed3af5de509c1": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81fdbddbdd1dc096d744": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3a94312b32bb81ff9650c0f8d5ba6932": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb8161b85dd76c3f69470e": {
+   "workstream": "Vision",
+   "hard": false
+  },
+  "3f24312b32bb819abc7fe09dba49c77d": {
+   "workstream": "Vision",
+   "hard": false
+  },
+  "3f24312b32bb816e8ba6ee91bd0c682b": {
+   "workstream": "Budget",
+   "hard": false
+  },
+  "3f24312b32bb818f9957ed08a96b8046": {
+   "workstream": "Budget",
+   "hard": false
+  },
+  "3f24312b32bb81adbf51f2c81b052526": {
+   "workstream": "Budget",
+   "hard": false
+  },
+  "3f24312b32bb8153821aff3349bfef31": {
+   "workstream": "Budget",
+   "hard": true
+  },
+  "3f24312b32bb81f2a38ac971b686e54d": {
+   "workstream": "Budget",
+   "hard": true
+  },
+  "3f24312b32bb81ebbb84e962ab76ec81": {
+   "workstream": "Budget",
+   "hard": true
+  },
+  "3f24312b32bb816f9f36e20ab4ab48ff": {
+   "workstream": "Budget",
+   "hard": false
+  },
+  "3f24312b32bb81c088c7c6a1715b1f65": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb81e59c37cf33123276e5": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb81c3897ee2ae91c4eb61": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb81a6be26c201a0145517": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb817e89afe3295281462a": {
+   "workstream": "Guests",
+   "hard": false
+  },
+  "3f24312b32bb81e58df6e045341390ff": {
+   "workstream": "Guests",
+   "hard": true
+  },
+  "3f24312b32bb81f0899bd8e2cacdee18": {
+   "workstream": "Guests",
+   "hard": true
+  },
+  "3f24312b32bb81fc88f4e98756cc4f1d": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb8188b105ebf9264752d4": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb817e84aef47fa50b3182": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb81c98f54c466c0ae88a7": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb81ff860fe3282a5cf8be": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb813c9c3ced8165971960": {
+   "workstream": "Venue",
+   "hard": false
+  },
+  "3f24312b32bb812d8c20f4b3a7e47f29": {
+   "workstream": "Venue",
+   "hard": true
+  },
+  "3f24312b32bb814fb5f1cecf87b76b2b": {
+   "workstream": "Food",
+   "hard": false
+  },
+  "3f24312b32bb812990b6c967b0f14283": {
+   "workstream": "Food",
+   "hard": false
+  },
+  "3f24312b32bb812c85f3c011ed824910": {
+   "workstream": "Ceremony & legal",
+   "hard": false
+  },
+  "3f24312b32bb81ab9345f9338820cd24": {
+   "workstream": "Ceremony & legal",
+   "hard": false
+  },
+  "3f24312b32bb81aa9c4eca39e4107199": {
+   "workstream": "Ceremony & legal",
+   "hard": false
+  },
+  "3f24312b32bb8184944ef89ff71f4720": {
+   "workstream": "Ceremony & legal",
+   "hard": true
+  },
+  "3f24312b32bb81999dd1e51a68573b94": {
+   "workstream": "Traditions",
+   "hard": false
+  },
+  "3f24312b32bb81a4b09ec5b08ded4841": {
+   "workstream": "Traditions",
+   "hard": false
+  },
+  "3f24312b32bb81dca717da5c6fa9bc36": {
+   "workstream": "Traditions",
+   "hard": false
+  },
+  "3f24312b32bb8117b025e509c4138741": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3f24312b32bb81bfa3dcdc21526a59b5": {
+   "workstream": "Vendors",
+   "hard": false
+  },
+  "3f24312b32bb815e8a87efa8536027cc": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3f24312b32bb814bb1e4c1ff6be55141": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3f24312b32bb816a82eed270e116dc94": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3f24312b32bb81dcae7bca1bbdb32f5b": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3f24312b32bb817fa8d1ec3c596bcf25": {
+   "workstream": "Attire & beauty",
+   "hard": false
+  },
+  "3f24312b32bb815d8cefda545dc39134": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3f24312b32bb81cf8abcc435a447fcf3": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3f24312b32bb812995dcdd20f115d22e": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3f24312b32bb810b8e56c27f58ee818b": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3f24312b32bb81d28976cb17ff8441cc": {
+   "workstream": "People & roles",
+   "hard": false
+  },
+  "3f24312b32bb817aa9bae3bf00d9e37e": {
+   "workstream": "Day-of",
+   "hard": false
+  },
+  "3f24312b32bb816cb6a5cb7df38bca25": {
+   "workstream": "Day-of",
+   "hard": false
+  },
+  "3f24312b32bb81068ab7fa83006f6ff4": {
+   "workstream": "Admin & after",
+   "hard": true
+  },
+  "3f24312b32bb81e68e04df819dd4085a": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3f24312b32bb81c79930e8646cd8e081": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3f24312b32bb81d2b09ceb18b8c36e8c": {
+   "workstream": "Admin & after",
+   "hard": false
+  },
+  "3f24312b32bb810f9cbfc89390e9efd7": {
+   "workstream": "Admin & after",
+   "hard": false
+  }
+ }
+}

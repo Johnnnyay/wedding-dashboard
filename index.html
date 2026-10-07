@@ -3,470 +3,805 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Johnny & Irene — Wedding Dashboard</title>
+<title>Johnny & Irene Wedding</title>
 <script>
 try { var m = localStorage.getItem('wedtheme'); if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m); } catch (e) {}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
+/* Limestone and boxwood from Hempstead House. Green = done/good, amber = needs attention soon, red = overdue. */
 :root {
   color-scheme: light;
-  --bg: #f7f7f5;
-  --surface: #ffffff;
-  --border: #e8e8e5;
-  --border-strong: #d0d0cc;
-  --text: #1c1c1a;
-  --text-sub: #72726e;
-  --text-muted: #a8a8a4;
-  --accent: #1a5c4a;
-  --accent-light: #f0f7f5;
-  --accent-border: #b2d8ce;
-  --rose: #8b3a52;
-  --radius: 8px;
-  /* chips: background / ink pairs */
-  --c-grey-bg: #f0f0ee;  --c-grey: #6f6f6b;
-  --c-blue-bg: #dbeafe;  --c-blue: #1e40af;
-  --c-amber-bg: #fef3c7; --c-amber: #b45309;
-  --c-orange-bg: #ffedd5;--c-orange: #c2410c;
-  --c-violet-bg: #ede9fe;--c-violet: #6d28d9;
-  --c-green-bg: #d1fae5; --c-green: #065f46;
-  --c-red-bg: #fee2e2;   --c-red: #b91c1c; --c-red-line: #fca5a5;
-  --dot-todo: #d0d0cc;
+  --bg: #f4f5f1; --surface: #ffffff; --surface-2: #eceee8; --line: #dadfd5; --line-2: #c7cec3;
+  --ink: #1d2320; --ink-2: #48514c; --muted: #6c756f;
+  --green: #2d5a46; --green-soft: #e3ece6;
+  --rose: #a2455d; --rose-soft: #f5e6ea;
+  --amber: #8a5a0b; --amber-soft: #fbf0d9;
+  --red: #b3261e; --red-soft: #fbe9e7;
+  --blue: #2f5f9e; --blue-soft: #e5edf8;
+  --display: "Bodoni Moda", Didot, Georgia, serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --zh: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #111312; --surface: #181b1a; --border: #2a2f2d; --border-strong: #3a413e;
-    --text: #e7e9e6; --text-sub: #a9aea9; --text-muted: #7c827d;
-    --accent: #5fc0a2; --accent-light: #172621; --accent-border: #2c5a4c; --rose: #e2809b;
-    --c-grey-bg: #262a28;  --c-grey: #a9aea9;
-    --c-blue-bg: #18253d;  --c-blue: #8cb4f5;
-    --c-amber-bg: #2c2414; --c-amber: #e2b04f;
-    --c-orange-bg: #2e1d12;--c-orange: #f0995f;
-    --c-violet-bg: #241d3a;--c-violet: #b9a6f5;
-    --c-green-bg: #13291f; --c-green: #6fd3a5;
-    --c-red-bg: #2e1617;   --c-red: #f08a8a; --c-red-line: #6b2b2d;
-    --dot-todo: #4a514d;
+    --bg: #121513; --surface: #191d1b; --surface-2: #212623; --line: #2e3531; --line-2: #3d4640;
+    --ink: #e6e9e5; --ink-2: #b6bdb7; --muted: #8b948d;
+    --green: #7cc3a1; --green-soft: #1a2a22;
+    --rose: #e08aa0; --rose-soft: #2c1a20;
+    --amber: #e3b25a; --amber-soft: #2a2113;
+    --red: #f08a80; --red-soft: #2e1715;
+    --blue: #8cb4f0; --blue-soft: #18233a;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #111312; --surface: #181b1a; --border: #2a2f2d; --border-strong: #3a413e;
-  --text: #e7e9e6; --text-sub: #a9aea9; --text-muted: #7c827d;
-  --accent: #5fc0a2; --accent-light: #172621; --accent-border: #2c5a4c; --rose: #e2809b;
-  --c-grey-bg: #262a28;  --c-grey: #a9aea9;
-  --c-blue-bg: #18253d;  --c-blue: #8cb4f5;
-  --c-amber-bg: #2c2414; --c-amber: #e2b04f;
-  --c-orange-bg: #2e1d12;--c-orange: #f0995f;
-  --c-violet-bg: #241d3a;--c-violet: #b9a6f5;
-  --c-green-bg: #13291f; --c-green: #6fd3a5;
-  --c-red-bg: #2e1617;   --c-red: #f08a8a; --c-red-line: #6b2b2d;
-  --dot-todo: #4a514d;
+  --bg: #121513; --surface: #191d1b; --surface-2: #212623; --line: #2e3531; --line-2: #3d4640;
+  --ink: #e6e9e5; --ink-2: #b6bdb7; --muted: #8b948d;
+  --green: #7cc3a1; --green-soft: #1a2a22;
+  --rose: #e08aa0; --rose-soft: #2c1a20;
+  --amber: #e3b25a; --amber-soft: #2a2113;
+  --red: #f08a80; --red-soft: #2e1715;
+  --blue: #8cb4f0; --blue-soft: #18233a;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: var(--green); }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 4px; }
+button { font: inherit; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 1.9rem); line-height: 1.15; }
+h3 { font-size: 1rem; font-weight: 700; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.zh { font-family: var(--zh); }
+.muted { color: var(--muted); }
+.small { font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-.header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.875rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
-.header h1 { font-size: 14px; font-weight: 600; }
-.header .sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
-.header-right { display: flex; align-items: center; gap: 8px; }
-.themebtn { background: none; border: 1px solid var(--border); border-radius: 7px; padding: 4px 9px; color: var(--text-sub); font: inherit; font-size: 11.5px; cursor: pointer; white-space: nowrap; }
-.themebtn:hover { border-color: var(--border-strong); color: var(--text); }
-.pill-countdown { white-space: nowrap; background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--accent); font-weight: 600; }
+/* Header + nav */
+.top { position: sticky; top: 0; z-index: 10; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px 0; display: flex; flex-direction: column; gap: 10px; }
+.brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand h1 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; line-height: 1.1; }
+.brand h1 em { color: var(--rose); font-style: italic; }
+.brand .sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.brand-right { display: flex; align-items: center; gap: 8px; }
+.countdown { font-family: var(--mono); font-size: 13px; color: var(--green); background: var(--green-soft); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+.themebtn { background: none; border: 1px solid var(--line); border-radius: 7px; padding: 4px 9px; color: var(--ink-2); font-size: 12px; cursor: pointer; white-space: nowrap; }
+.themebtn:hover { border-color: var(--line-2); color: var(--ink); }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin: 0 -4px; }
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs a { padding: 9px 12px; color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 14px; border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabs a:hover { color: var(--ink); }
+nav.tabs a.on { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
 
-.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-bottom: 1px solid var(--border); }
-.stat { text-align: center; padding: 0.75rem 0.5rem; border-right: 1px solid var(--border); }
-.stat:last-child { border-right: none; }
-.stat-num { font-size: 20px; font-weight: 600; color: var(--accent); }
-.stat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.04em; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 64px; }
+.view { display: flex; flex-direction: column; gap: 28px; }
+.view[hidden] { display: none; }
+.block { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.block-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.lede { color: var(--ink-2); max-width: 70ch; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
 
-.tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 1.5rem; }
-.tab { padding: 0.625rem 1rem; font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--text-sub); margin-bottom: -1px; white-space: nowrap; transition: all 0.12s; }
-.tab:hover { color: var(--text); }
-.tab.active { border-bottom-color: var(--accent); color: var(--accent); font-weight: 500; }
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stat { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat .v { font-family: var(--mono); font-size: 1.6rem; color: var(--ink); line-height: 1.2; }
+.stat .k { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+.stat .d { font-size: 13px; color: var(--ink-2); overflow-wrap: anywhere; }
+.stat.warn .v { color: var(--red); }
+.stat.good .v { color: var(--green); }
 
-.content { padding: 1.25rem 1.5rem; max-width: 900px; }
+/* Two columns on wide screens */
+.cols { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 900px) { .cols { grid-template-columns: minmax(0, 1fr); } }
 
-/* TASKS */
-.phase-group { margin-bottom: 1.5rem; }
-.phase-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
-.phase-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); white-space: nowrap; }
-.phase-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.phase-fill { height: 100%; border-radius: 2px; }
-.phase-count { font-size: 10px; color: var(--text-muted); white-space: nowrap; }
-.task-list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.task-row { display: flex; align-items: center; gap: 10px; padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--border); }
-.task-row:last-child { border-bottom: none; }
-.task-row:hover { background: var(--accent-light); }
-.sdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.sdot-todo { background: var(--dot-todo); }
-.sdot-doing { background: #378ADD; }
-.sdot-done { background: #1D9E75; }
-.task-name { flex: 1; font-size: 12.5px; }
-.task-name a { color: var(--text); text-decoration: none; }
-.task-name a:hover { color: var(--accent); text-decoration: underline; }
-.task-name.done-txt { text-decoration: line-through; color: var(--text-muted); }
-.tag { font-size: 10px; background: var(--bg); border-radius: 3px; padding: 1px 6px; color: var(--text-muted); white-space: nowrap; }
-.date-tag { font-size: 10.5px; color: var(--text-sub); white-space: nowrap; }
-.date-tag.od { color: var(--rose); font-weight: 600; }
+/* Task rows */
+.list { overflow: hidden; }
+.row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 10px 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--surface-2); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
+.dot.doing { background: var(--blue); }
+.dot.done { background: var(--green); }
+.row .name { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.row .name a { color: var(--ink); text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
+.row .name a:hover { color: var(--green); text-decoration: underline; }
+.row.done .name a { color: var(--muted); text-decoration: line-through; font-weight: 400; }
+.row .meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.row .note { font-size: 12.5px; color: var(--muted); }
+.when { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); white-space: nowrap; text-align: right; }
+.when.late { color: var(--red); font-weight: 500; }
+.when.soon { color: var(--amber); font-weight: 500; }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.chip.hard { background: var(--rose-soft); color: var(--rose); }
+.chip.owner { background: transparent; border: 1px solid var(--line); font-weight: 500; }
+.empty { padding: 18px; color: var(--muted); text-align: center; }
 
-/* TOOLBAR */
-.toolbar { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
-.search-input { flex: 1; min-width: 160px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 12.5px; background: var(--surface); color: var(--text); }
-.search-input:focus { outline: none; border-color: var(--accent); }
-.fpill { padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; font-size: 11px; cursor: pointer; background: var(--surface); color: var(--text-sub); white-space: nowrap; user-select: none; }
-.fpill:hover { background: var(--bg); }
-.fpill.on { background: var(--accent-light); border-color: var(--accent-border); color: var(--accent); font-weight: 500; }
-.sep { color: var(--border); padding: 0 2px; }
-.notion-btn { margin-left: auto; font-size: 11px; color: var(--text-muted); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); white-space: nowrap; }
-.notion-btn:hover { color: var(--accent); border-color: var(--accent-border); }
+/* Workstream grid */
+.ws-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .ws-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ws-grid { grid-template-columns: minmax(0, 1fr); } }
+.ws { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; text-align: left; cursor: pointer; color: inherit; min-width: 0; }
+.ws:hover { border-color: var(--line-2); }
+.ws .top-line { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.ws .count { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.bar { height: 5px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--green); }
+.ws .next { font-size: 13px; color: var(--ink-2); overflow-wrap: anywhere; }
+.ws .next b { font-weight: 600; color: var(--ink); }
+.ws .next.late b { color: var(--red); }
 
-/* VENDOR TABLE */
-.vtable { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.vtable th { text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-sub); padding: 0.5rem 0.75rem; background: var(--bg); border-bottom: 1px solid var(--border); }
-.vtable td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); font-size: 12.5px; vertical-align: middle; }
-.vtable tr:last-child td { border-bottom: none; }
-.vtable tr:hover td { background: var(--accent-light); }
-.vname a { font-weight: 500; color: var(--text); text-decoration: none; }
-.vname a:hover { color: var(--accent); }
-.badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 20px; font-weight: 600; }
-.t1b { background: var(--c-green-bg); color: var(--c-green); }
-.t2b { background: var(--c-blue-bg); color: var(--c-blue); }
-.sb-0 { background: var(--c-grey-bg); color: var(--c-grey); }
-.sb-1 { background: var(--c-blue-bg); color: var(--c-blue); }
-.sb-2 { background: var(--c-amber-bg); color: var(--c-amber); }
-.sb-3 { background: var(--c-orange-bg); color: var(--c-orange); }
-.sb-4 { background: var(--c-violet-bg); color: var(--c-violet); }
-.sb-5 { background: var(--c-green-bg); color: var(--c-green); }
-.sb-6 { background: var(--c-red-bg); color: var(--c-red); }
-.s-label { white-space: nowrap; display: inline-block; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; }
+/* Team board */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; overflow: hidden; }
+@media (max-width: 560px) { .team { grid-template-columns: minmax(0, 1fr); } }
+.team > div { padding: 10px 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 10px; min-width: 0; }
+.team .role { font-weight: 600; font-size: 14px; }
+.team .who { font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+.st { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.st.booked { background: var(--green-soft); color: var(--green); }
+.st.quote { background: var(--amber-soft); color: var(--amber); }
+.st.research { background: var(--blue-soft); color: var(--blue); }
+.st.none { background: var(--surface-2); color: var(--muted); }
 
-/* TEAM */
-.team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.875rem 1rem; margin-bottom: 8px; display: flex; gap: 1rem; }
-.team-rank { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.team-body { flex: 1; min-width: 0; }
-.team-title { font-size: 13px; font-weight: 600; }
-.team-title a { color: var(--text); text-decoration: none; }
-.team-title a:hover { color: var(--accent); }
-.team-meta { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
-.team-pubs { font-size: 11.5px; color: var(--text-sub); margin-top: 3px; }
-.team-notes { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 3px; }
-.team-tags { margin-top: 5px; display: flex; gap: 4px; flex-wrap: wrap; }
-.tc-p { background: var(--c-blue-bg); color: var(--c-blue); }
-.tc-v { background: var(--c-violet-bg); color: var(--c-violet); }
-.tc-c { background: var(--c-green-bg); color: var(--c-green); }
-.tb-b { background: var(--c-green-bg); color: var(--c-green); }
-.score-b { background: var(--accent-light); color: var(--accent); }
-.tb-c { background: var(--c-blue-bg); color: var(--c-blue); }
-.team-right { flex-shrink: 0; text-align: right; }
-.team-price { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
-.ws-link { font-size: 10.5px; color: var(--accent); display: block; margin-top: 4px; }
+/* Toolbar */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; padding: 6px 12px; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.seg button.on { background: var(--green-soft); color: var(--green); font-weight: 600; }
+.pill { border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+.pill:hover { border-color: var(--line-2); }
+.pill.on { background: var(--green-soft); border-color: transparent; color: var(--green); font-weight: 600; }
+select, input[type=search] { font: inherit; font-size: 13px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
+input[type=search] { flex: 1 1 180px; min-width: 0; }
+.check { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.group-title { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-top: 8px; }
+.group-title h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+.group-title span { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.edit { font-size: 12.5px; color: var(--ink-2); text-decoration: none; border: 1px solid var(--line); border-radius: 7px; padding: 5px 10px; background: var(--surface); white-space: nowrap; }
+.edit:hover { color: var(--green); border-color: var(--line-2); }
 
-/* UTILS */
-.loading { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
-.spin { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 8px; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.err { background: var(--c-red-bg); border: 1px solid var(--c-red-line); border-radius: var(--radius); padding: 0.75rem 1rem; color: var(--c-red); font-size: 12.5px; margin-bottom: 1rem; }
-.meta-line { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
-.updated-line { font-size: 10px; color: var(--text-muted); text-align: right; margin-bottom: 0.5rem; }
-.table-wrap { overflow-x: auto; border-radius: var(--radius); }
-.table-wrap .vtable { min-width: 560px; }
+/* Tables */
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.table-wrap table { min-width: 600px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--surface-2); padding: 9px 14px; border-bottom: 1px solid var(--line); }
+td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-2); }
+td:first-child { color: var(--ink); }
+tr:last-child td { border-bottom: none; }
+.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td a { color: var(--ink); font-weight: 500; text-decoration: none; }
+td a:hover { color: var(--green); text-decoration: underline; }
 
-@media (max-width: 600px) {
-  .header { flex-wrap: wrap; gap: 8px; padding: 0.75rem 1rem; }
-  .tabs { padding: 0 0.5rem; overflow-x: auto; }
-  .tab { padding: 0.625rem 0.6rem; }
-  .content { padding: 1rem; }
-}
+/* Budget calculator */
+.calc { padding: 16px 18px; display: flex; flex-direction: column; gap: 14px; }
+.calc .row-i { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.calc label { font-weight: 600; }
+.calc input[type=range] { flex: 1 1 220px; accent-color: var(--green); }
+.calc output { font-family: var(--mono); font-size: 1.4rem; color: var(--green); min-width: 4ch; }
+.totals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .totals { grid-template-columns: minmax(0, 1fr); } }
+.totals div { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+.totals .k { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.totals .v { font-family: var(--mono); font-size: 1.1rem; }
+
+/* Day-of */
+.day { display: grid; grid-template-columns: 84px minmax(0, 1fr); overflow: hidden; }
+.day > div { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.day > div:nth-last-child(-n+2) { border-bottom: none; }
+.day .t { font-family: var(--mono); font-size: 13px; color: var(--green); background: var(--surface-2); border-right: 1px solid var(--line); }
+.day .t.sun { color: var(--rose); }
+.day .w { color: var(--ink-2); }
+.day .w b { color: var(--ink); }
+
+/* Notes and lists */
+.flags { display: grid; gap: 10px; }
+.flag { padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.flag.act { background: var(--amber-soft); border-color: transparent; }
+.flag p { color: var(--ink-2); font-size: 14px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.box { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.box ol, .box ul { margin: 0; padding-left: 20px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.err { background: var(--red-soft); color: var(--red); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; }
+footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; font-size: 12.5px; color: var(--muted); display: flex; gap: 6px 16px; flex-wrap: wrap; }
+@media (max-width: 600px) { .top-inner, main, footer { padding-left: 16px; padding-right: 16px; } .brand h1 { font-size: 1.25rem; } }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div>
-    <h1>Johnny &amp; Irene 💍 Wedding Dashboard</h1>
-    <div class="sub">May 21, 2027 · Hempstead House, Sands Point Preserve, Long Island, NY</div>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <div>
+        <h1>Johnny <em>&amp;</em> Irene</h1>
+        <div class="sub">Friday, May 21, 2027 · Hempstead House, Sands Point · 230 guests</div>
+      </div>
+      <div class="brand-right">
+        <button class="themebtn" id="themebtn" type="button">Theme: Auto</button>
+        <span class="countdown" id="countdown">days to go</span>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#today" data-view="today">Today</a>
+      <a href="#plan" data-view="plan">Plan</a>
+      <a href="#money" data-view="money">Money</a>
+      <a href="#vendors" data-view="vendors">Vendors</a>
+      <a href="#day" data-view="day">The Day</a>
+      <a href="#venue" data-view="venue">Venue</a>
+    </nav>
   </div>
-  <div class="header-right">
-    <button class="themebtn" id="themebtn" type="button">Theme: Auto</button>
-    <div class="pill-countdown" id="countdown">Loading...</div>
-  </div>
-</div>
+</header>
 
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num" id="s-days">—</div><div class="stat-label">Days Away</div></div>
-  <div class="stat"><div class="stat-num" id="s-tasks">—</div><div class="stat-label">Tasks Done</div></div>
-  <div class="stat"><div class="stat-num" id="s-contacted">—</div><div class="stat-label">Vendors Contacted</div></div>
-  <div class="stat"><div class="stat-num" id="s-booked">—</div><div class="stat-label">Vendors Booked</div></div>
-</div>
+<main>
+  <!-- TODAY -->
+  <section class="view" id="view-today">
+    <div class="stats">
+      <div class="card stat" id="st-overdue"><span class="k">Overdue</span><span class="v">–</span><span class="d">tasks past their date</span></div>
+      <div class="card stat" id="st-soon"><span class="k">Next 14 days</span><span class="v">–</span><span class="d">tasks coming up</span></div>
+      <div class="card stat" id="st-hard"><span class="k">Next hard date</span><span class="v">–</span><span class="d"></span></div>
+      <div class="card stat" id="st-done"><span class="k">Done</span><span class="v">–</span><span class="d">of all tasks</span></div>
+    </div>
+    <div class="cols">
+      <div class="block">
+        <div class="block-head"><h2>Needs attention</h2><a class="edit" href="#plan">All tasks</a></div>
+        <p class="small">Overdue and due in the next 14 days. Tick them off in Notion and this updates within 30 minutes.</p>
+        <div class="card list" id="attention"><div class="empty">Loading tasks…</div></div>
+      </div>
+      <div class="block">
+        <div class="block-head"><h2>Who's booked</h2><a class="edit" href="#vendors">Vendors</a></div>
+        <div class="card team" id="team-mini"></div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-head"><h2>The twelve workstreams</h2><span class="small">Tap one to see its tasks</span></div>
+      <div class="ws-grid" id="ws-grid"></div>
+    </div>
+  </section>
 
-<div class="tabs">
-  <div class="tab active" onclick="showTab('tasks',this)">📋 Tasks</div>
-  <div class="tab" onclick="showTab('vendors',this)">🌸 Floral &amp; Decor</div>
-  <div class="tab" onclick="showTab('team',this)">📸 Creative Team</div>
-</div>
+  <!-- PLAN -->
+  <section class="view" id="view-plan" hidden>
+    <div class="block-head"><h2>The plan</h2><a class="edit" id="notion-tasks" target="_blank" rel="noopener">Edit in Notion</a></div>
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="Group by">
+        <button type="button" id="g-month" class="on">By month</button>
+        <button type="button" id="g-ws">By workstream</button>
+      </div>
+      <select id="f-owner" aria-label="Owner"><option value="all">Everyone</option></select>
+      <label class="check"><input type="checkbox" id="f-hide" checked> Hide done</label>
+      <input type="search" id="f-q" placeholder="Search tasks" aria-label="Search tasks">
+    </div>
+    <div class="pills" id="f-ws"></div>
+    <div id="plan-list" class="block"></div>
+  </section>
 
-<div class="content">
-  <div id="tab-tasks"><div class="loading"><div class="spin"></div><br>Loading tasks...</div></div>
-  <div id="tab-vendors" style="display:none"><div class="loading"><div class="spin"></div><br>Loading vendors...</div></div>
-  <div id="tab-team" style="display:none"><div class="loading"><div class="spin"></div><br>Loading team...</div></div>
-</div>
+  <!-- MONEY -->
+  <section class="view" id="view-money" hidden>
+    <div class="block">
+      <h2>Payments and hard dates</h2>
+      <p class="lede">From the venue permit and catering contract (July 9, 2026). The venue takes bank or cashier's checks only. Philip Stone's final payment is cash or certified check.</p>
+      <div class="card table-wrap"><table>
+        <thead><tr><th>Date</th><th>What</th><th class="num">Amount</th></tr></thead>
+        <tbody id="pay-rows"></tbody>
+      </table></div>
+      <p class="small">The catering contract still guarantees 150. The guarantee is a minimum, so you can raise it now or at the final count on May 13. If you raise it first, the January payment grows and the May balance shrinks by the same amount.</p>
+    </div>
+    <div class="block">
+      <h2>Budget</h2>
+      <p class="lede">Venue, catering, rentals and police use your contract rates. Everything else is a typical New York range to plan against until you have quotes.</p>
+      <div class="card calc">
+        <div class="row-i">
+          <label for="guests">Guests</label>
+          <input type="range" id="guests" min="120" max="250" step="5" value="230">
+          <output id="guests-out" for="guests">230</output>
+        </div>
+        <p class="small">Catering: $205 food + $50 bar + $60 staff per guest, plus $500 ceremony fee, then 20% admin charge and 8.625% tax. The room seats 250 at most.</p>
+        <div class="totals">
+          <div><span class="k">Venue, catering, rentals</span><div class="v" id="t-core">–</div></div>
+          <div><span class="k">Everything else</span><div class="v" id="t-rest">–</div></div>
+          <div><span class="k">Likely total</span><div class="v" id="t-all">–</div></div>
+        </div>
+      </div>
+      <div class="card table-wrap"><table>
+        <thead><tr><th>Line</th><th>Basis</th><th class="num">Low</th><th class="num">High</th></tr></thead>
+        <tbody id="budget-rows"></tbody>
+      </table></div>
+      <p class="small">Not included: hotel block (guests pay), honeymoon, engagement ring. The 20% admin charge is not a gratuity, so tips are their own line.</p>
+    </div>
+  </section>
+
+  <!-- VENDORS -->
+  <section class="view" id="view-vendors" hidden>
+    <div class="block">
+      <h2>Who's booked</h2>
+      <p class="lede">Every vendor the wedding needs. Mark one Booked in the Notion trackers and it turns green here.</p>
+      <div class="card team" id="team-full"></div>
+    </div>
+    <div class="block">
+      <div class="block-head"><h2>Shortlists</h2><a class="edit" id="notion-hub" target="_blank" rel="noopener">Edit in Notion</a></div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Shortlist">
+          <button type="button" id="s-team" class="on">Photo, video &amp; planners</button>
+          <button type="button" id="s-floral">Florals &amp; decor</button>
+        </div>
+      </div>
+      <div id="shortlist" class="block"></div>
+    </div>
+  </section>
+
+  <!-- THE DAY -->
+  <section class="view" id="view-day" hidden>
+    <div class="block">
+      <h2>Friday, May 21, 2027</h2>
+      <p class="lede">First draft, built on the venue's 5 to 11 PM structure. Sunset is 8:22 PM. The planner will tighten it once the traditions and ceremony site are settled.</p>
+      <div class="card day" id="day-rows"></div>
+    </div>
+    <div class="two">
+      <div class="card box"><h3>Point people to assign</h3><ul>
+        <li>Red envelope keeper, with a lockbox</li>
+        <li>Vendor tips and the police cash envelope</li>
+        <li>Escort for elders, from drop-off to their seats</li>
+        <li>Family photo wrangler, one per side</li>
+        <li>Teardown and the 10 AM Saturday pickup</li>
+        <li>FNH host that evening</li>
+      </ul></div>
+      <div class="card box"><h3>Not allowed at the venue</h3><ul>
+        <li>Open flames. Candles only inside glass.</li>
+        <li>Sparklers, fireworks, confetti, fog machines</li>
+        <li>Patio drinks after 30 minutes before dark</li>
+        <li>Music audible 50 ft away after 11 PM</li>
+        <li>Vendors drinking alcohol on site</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="view" id="view-venue" hidden>
+    <div class="block">
+      <h2>Open issues</h2>
+      <div class="flags">
+        <div class="card flag act"><h3>230 guests is close to the 250 maximum</h3><p>Ask for a floor plan at 230 with a dance floor, and confirm the rain backup seats 230 for the ceremony.</p></div>
+        <div class="card flag act"><h3>Tents: the permit and the venue disagree</h3><p>The permit allows tents for $2,000 a day. The venue's October 2025 email says tents are no longer permitted. Get the rain plan in writing.</p></div>
+        <div class="card flag act"><h3>The July permit has errors</h3><p>Exhibit C shows the payment dates as May 7, 2026 instead of 2027, and the email reads "Huangzheng-227." Ask for a corrected copy and written confirmation of the July 17 deposits.</p></div>
+        <div class="card flag"><h3>Scaffolding on the house</h3><p>Nassau County's lintel restoration is ongoing. If scaffolding is up during the event the fee drops by $2,000. Ask when it will come down.</p></div>
+      </div>
+    </div>
+    <div class="two">
+      <div class="card box"><h3>Questions for Emily (Philip Stone)</h3><ol>
+        <li>Confirm what we signed and paid on July 17, and send a corrected permit.</li>
+        <li>Are tents allowed? Where does a 230-guest ceremony go in the rain, and when is the rain call?</li>
+        <li>What does 230 look like on the floor plan, with a dance floor?</li>
+        <li>Should we raise the 150 guarantee now or at the final count?</li>
+        <li>When will the scaffolding come down?</li>
+        <li>Which second-floor rooms do we get for getting ready and a tea ceremony?</li>
+        <li>Can we rehearse on site Thursday evening?</li>
+        <li>Can we bring an outside cake? Is there a cutting fee?</li>
+        <li>When can we do a tasting, and what does it cost?</li>
+        <li>Can we opt out of our photos being used in marketing?</li>
+        <li>Is there an insurance broker you recommend for the three certificates?</li>
+      </ol></div>
+      <div class="card box"><h3>Required vendors</h3><ul>
+        <li><b>Philip Stone Caterers</b>: exclusive caterer. Contact Emily Stepancic, catering director.</li>
+        <li><b>Party Rental Ltd</b>: all tables, linens, china, glassware, chairs. Billed to you, from about $100 per guest.</li>
+        <li><b>Fusion Lighting</b>: the only company allowed to do perimeter room lighting.</li>
+        <li><b>Sands Point Police</b>: at least 2 officers at $125/hr, booked by Emily, paid in cash that night.</li>
+        <li><b>Prime Valet</b>: the venue's referral. Valet isn't included.</li>
+      </ul></div>
+    </div>
+    <div class="block">
+      <h2>The rules in your contracts</h2>
+      <div class="card table-wrap"><table>
+        <thead><tr><th>Area</th><th>Rule</th></tr></thead>
+        <tbody id="rule-rows"></tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span id="updated">Loading data…</span>
+  <span>Tasks and vendors come from Notion and refresh every 30 minutes.</span>
+</footer>
 
 <script>
 const HUB_URL = 'https://app.notion.com/p/3a94312b32bb81bb8529f29251aded1c';
+const TASKS_URL = 'https://app.notion.com/p/fdb8441d07b546f086d0ac978d067279';
+const WEDDING = new Date('2027-05-21T17:00:00');
+const TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
 
-let allTasks=[], allVendors=[], allTeam=[];
-let vRegion='all', vTier='all', vStatus='all', vSearch='';
-let tCat='all';
-let lastUpdated = null;
-
-function showTab(name, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  ['tasks','vendors','team'].forEach(t =>
-    document.getElementById('tab-'+t).style.display = t===name ? '' : 'none'
-  );
-}
-
-// Countdown
-(function tick() {
-  const ms = new Date('2027-05-21T17:00:00') - new Date();
-  const days = Math.ceil(ms/86400000);
-  document.getElementById('countdown').textContent = days.toLocaleString() + ' days to go';
-  document.getElementById('s-days').textContent = days.toLocaleString();
-})();
-
-function fmtDate(d) {
-  if (!d) return '';
-  return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});
-}
-function fmtUpdated(iso) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  const mins = Math.round((Date.now() - d) / 60000);
-  if (mins < 2) return 'just now';
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.round(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-}
-function isOD(d, status) {
-  return d && status !== 'Done' && new Date(d) < new Date();
-}
-function statusClass(s) {
-  return s==='Done'?'sdot-done': s==='In progress'?'sdot-doing':'sdot-todo';
-}
-const STATUS_MAP = {
-  'Not contacted':'sb-0','Email sent':'sb-1','Responded':'sb-2',
-  'Call scheduled':'sb-3','Quote received':'sb-4','Booked':'sb-5','Pass':'sb-6'
-};
-function sBadge(s) {
-  return `<span class="s-label ${STATUS_MAP[s]||'sb-0'}">${s||'Not contacted'}</span>`;
-}
-
-// TASKS
-const PHASES = [
-  {name:'Phase 1 \u2014 Foundation', color:'#1D9E75'},
-  {name:'Phase 2 \u2014 Team Assembly', color:'#378ADD'},
-  {name:'Phase 3 \u2014 Design & Details', color:'#7F77DD'},
-  {name:'Phase 4 \u2014 Final Countdown', color:'#D85A30'},
-  {name:'Phase 5 \u2014 Wedding Day', color:'#D4537E'},
-  {name:'Phase 6 \u2014 Post-Wedding', color:'#888790'},
+const WS = [
+  { name: 'Vision', blurb: 'Priorities, style, who has a say' },
+  { name: 'Budget', blurb: 'Total, payments, cash for the day' },
+  { name: 'Guests', blurb: 'List, invitations, RSVPs, hotel, shuttle' },
+  { name: 'Venue', blurb: 'Floor plan, rain plan, rentals, lighting' },
+  { name: 'Food', blurb: 'Menu, tasting, cake' },
+  { name: 'Ceremony & legal', blurb: 'Officiant, vows, rings, license' },
+  { name: 'Traditions', blurb: 'Tea ceremony, betrothal gifts, family customs' },
+  { name: 'Vendors', blurb: 'Planner, photo, video, florals, music' },
+  { name: 'Attire & beauty', blurb: 'Dress, qipao, suit, hair and makeup' },
+  { name: 'People & roles', blurb: 'Wedding party, speeches, point people' },
+  { name: 'Day-of', blurb: 'Timeline, shot list, contact sheet' },
+  { name: 'Admin & after', blurb: 'Insurance, certificates, thank-yous' }
 ];
 
-async function loadTasks() {
-  try {
-    const r = await fetch('./tasks.json');
-    if (!r.ok) throw new Error('tasks.json not found - run the GitHub Action first');
-    const json = await r.json();
-    allTasks = json.data || [];
-    lastUpdated = json.updated;
-    renderTasks();
-    updateStats();
-  } catch(e) {
-    document.getElementById('tab-tasks').innerHTML = `<div class="err"> ${e.message}</div>`;
-  }
-}
+let tasks = [], vendors = [], team = [], updated = null;
+const state = { group: 'month', owner: 'all', hideDone: true, q: '', ws: 'all', shortlist: 'team', tCat: 'all', vRegion: 'all', vStatus: 'all' };
 
-function renderTasks() {
-  let html = '';
-  if (lastUpdated) {
-    html += `<div class="updated-line">Data updated ${fmtUpdated(lastUpdated)} \u00b7 <a href="${HUB_URL}" target="_blank" style="color:var(--accent)">Edit in Notion \u2192</a></div>`;
-  }
-  PHASES.forEach(({name, color}) => {
-    const phaseNum = name.match(/\d+/)?.[0];
-    const tasks = allTasks.filter(t => t.phase?.match(/\d+/)?.[0] === phaseNum);
-    if (!tasks.length) return;
-    const done = tasks.filter(t => t.status === 'Done').length;
-    const pct = Math.round(done/tasks.length*100);
-    const label = tasks[0].phase?.replace(/Phase \d+\s*\\S+\s*/, '') || name;
-    html += `<div class="phase-group">
-      <div class="phase-header">
-        <span class="phase-name" style="color:${color}">${label}</span>
-        <div class="phase-bar"><div class="phase-fill" style="width:${pct}%;background:${color}"></div></div>
-        <span class="phase-count">${done}/${tasks.length}</span>
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function safeUrl(u) { return /^https:\/\//.test(u || '') ? u : '#'; }
+function dateOf(s) { return s ? new Date(s + 'T00:00:00') : null; }
+function fmt(s, withYear) {
+  const d = dateOf(s); if (!d) return '';
+  return d.toLocaleDateString('en-US', withYear ? { month: 'short', day: 'numeric', year: 'numeric' } : { month: 'short', day: 'numeric' });
+}
+function daysFrom(s) { const d = dateOf(s); return d ? Math.round((d - TODAY) / 86400000) : null; }
+const isDone = t => t.status === 'Done';
+function dueClass(t) {
+  if (isDone(t) || !t.dueDate) return '';
+  const n = daysFrom(t.dueDate);
+  return n < 0 ? 'late' : n <= 14 ? 'soon' : '';
+}
+function usd(x) { return '$' + (Math.round(x / 100) * 100).toLocaleString('en-US'); }
+function ago(iso) {
+  if (!iso) return '';
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  if (m < 2) return 'just now'; if (m < 60) return m + ' min ago';
+  const h = Math.round(m / 60); if (h < 24) return h + 'h ago';
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+function sortByDate(a, b) { return (a.dueDate || '9999') < (b.dueDate || '9999') ? -1 : (a.dueDate || '9999') > (b.dueDate || '9999') ? 1 : 0; }
+
+function taskRow(t, opts) {
+  opts = opts || {};
+  const dc = dueClass(t), n = daysFrom(t.dueDate);
+  let when = t.dueDate ? fmt(t.dueDate, opts.year) : 'No date';
+  if (dc === 'late') when = fmt(t.dueDate) + ' · ' + (-n) + 'd late';
+  else if (dc === 'soon') when = n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : fmt(t.dueDate) + ' · ' + n + 'd';
+  const dot = isDone(t) ? 'done' : t.status === 'In progress' ? 'doing' : '';
+  return `<div class="row${isDone(t) ? ' done' : ''}">
+    <span class="dot ${dot}" title="${esc(t.status || 'Not started')}"></span>
+    <div class="name"><a href="${esc(safeUrl(t.url))}" target="_blank" rel="noopener">${esc(t.name)}</a>
+      <div class="meta">
+        ${t.hard ? '<span class="chip hard">Hard date</span>' : ''}
+        ${!opts.noWs && t.workstream ? `<span class="chip">${esc(t.workstream)}</span>` : ''}
+        ${t.owner ? `<span class="chip owner">${esc(t.owner)}</span>` : ''}
       </div>
-      <div class="task-list">`;
-    [...tasks].sort((a,b)=>(a.dueDate||'9999') < (b.dueDate||'9999')?-1:1)
-      .forEach(t => {
-        const od = isOD(t.dueDate, t.status);
-        const isDone = t.status === 'Done';
-        html += `<div class="task-row">
-          <div class="sdot ${statusClass(t.status)}"></div>
-          <div class="task-name${isDone?' done-txt':''}"><a href="${t.url}" target="_blank">${t.name}</a></div>
-          <span class="tag">${t.owner||''}</span>
-          <span class="date-tag${od?' od':''}">${t.dueDate?fmtDate(t.dueDate):''}</span>
-        </div>`;
-      });
-    html += `</div></div>`;
-  });
-  document.getElementById('tab-tasks').innerHTML = html;
-}
-
-// VENDORS
-async function loadVendors() {
-  try {
-    const r = await fetch('./vendors.json');
-    if (!r.ok) throw new Error('vendors.json not found - run the GitHub Action first');
-    const json = await r.json();
-    allVendors = json.data || [];
-    renderVendors();
-    updateStats();
-  } catch(e) {
-    document.getElementById('tab-vendors').innerHTML = `<div class="err"> ${e.message}</div>`;
-  }
-}
-
-function fpill(label, val, cur, fn) {
-  return `<span class="fpill${cur===val?' on':''}" onclick="${fn}='${val}';renderVendors()">${label}</span>`;
-}
-
-function renderVendors() {
-  const s = vSearch.toLowerCase();
-  const filtered = allVendors.filter(v => {
-    if (vRegion !== 'all' && v.region !== vRegion) return false;
-    if (vTier !== 'all' && v.tier !== vTier) return false;
-    if (vStatus !== 'all' && v.status !== vStatus) return false;
-    if (s && !v.name.toLowerCase().includes(s) && !(v.notes||'').toLowerCase().includes(s)) return false;
-    return true;
-  });
-  const t1 = allVendors.filter(v => v.tier?.includes('1')).length;
-  const contacted = allVendors.filter(v => v.status && v.status!=='Not contacted').length;
-
-  const html = `
-    <div class="toolbar">
-      <input class="search-input" placeholder="Search vendors..." oninput="vSearch=this.value;renderVendors()" value="${vSearch}">
-      ${fpill('All regions','all',vRegion,'vRegion')}
-      ${fpill('Long Island','Long Island',vRegion,'vRegion')}
-      ${fpill('NYC','NYC',vRegion,'vRegion')}
-      ${fpill('NJ','NJ',vRegion,'vRegion')}
-      <span class="sep">|</span>
-      ${fpill('All tiers','all',vTier,'vTier')}
-      ${fpill('Has email','Tier 1',vTier,'vTier')}
-      ${fpill('Form only','Tier 2',vTier,'vTier')}
-      <span class="sep">|</span>
-      ${fpill('Any status','all',vStatus,'vStatus')}
-      ${fpill('Booked','Booked',vStatus,'vStatus')}
-      ${fpill('Responded','Responded',vStatus,'vStatus')}
-      <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion</a>
+      ${opts.notes && t.notes ? `<span class="note">${esc(t.notes)}</span>` : ''}
     </div>
-    <div class="meta-line">${filtered.length} vendors \u00b7 ${t1} have direct emails \u00b7 ${contacted} contacted</div>
-    <div class="table-wrap"><table class="vtable">
-      <thead><tr>
-        <th>Company</th><th>Region</th><th>Tier</th><th>Status</th><th>Notes</th>
-      </tr></thead>
-      <tbody>
-        ${filtered.map(v => `<tr>
-          <td class="vname"><a href="${v.url}" target="_blank">${v.name}</a></td>
-          <td>${v.region||''}</td>
-          <td><span class="badge ${v.tier?.includes('1')?'t1b':'t2b'}">${v.tier?.includes('1')?'Email':'Form'}</span></td>
-          <td>${sBadge(v.status)}</td>
-          <td style="max-width:260px;font-size:11.5px;color:var(--text-sub)">${v.notes||''}</td>
-        </tr>`).join('')}
-      </tbody>
-    </table></div>`;
-  document.getElementById('tab-vendors').innerHTML = html;
-}
-
-// TEAM
-async function loadTeam() {
-  try {
-    const r = await fetch('./team.json');
-    if (!r.ok) throw new Error('team.json not found - run the GitHub Action first');
-    const json = await r.json();
-    allTeam = json.data || [];
-    renderTeam();
-  } catch(e) {
-    document.getElementById('tab-team').innerHTML = `<div class="err"> ${e.message}</div>`;
-  }
-}
-
-const CAT_CLS = { Photographer:'tc-p', Videographer:'tc-v', 'Planner/Coordinator':'tc-c' };
-const TIER_CLS = { 'Tier B':'tb-b', 'Tier C':'tb-c' };
-
-function renderTeam() {
-  const filtered = allTeam.filter(t => tCat==='all' || t.category===tCat);
-  let html = `<div class="toolbar">
-    <span class="fpill${tCat==='all'?' on':''}" onclick="tCat='all';renderTeam()">All (${allTeam.length})</span>
-    ${['Photographer','Videographer','Planner/Coordinator'].map(c =>
-      `<span class="fpill${tCat===c?' on':''}" onclick="tCat='${c}';renderTeam()">${c}s (${allTeam.filter(t=>t.category===c).length})</span>`
-    ).join('')}
-    <a href="${HUB_URL}" target="_blank" class="notion-btn">Edit in Notion</a>
+    <span class="when ${dc}">${esc(when)}</span>
   </div>`;
-  filtered.forEach((p, i) => {
-    html += `<div class="team-card">
-      <div class="team-rank">${i+1}</div>
-      <div class="team-body">
-        <div class="team-title"><a href="${p.url}" target="_blank">${p.name}</a></div>
-        <div class="team-meta">${p.location||''}</div>
-        <div class="team-pubs">${p.publications||''}</div>
-        <div class="team-notes">${p.notes||''}</div>
-        <div class="team-tags">
-          <span class="badge ${CAT_CLS[p.category]||''}">${p.category||''}</span>
-          ${p.tier ? `<span class="badge ${TIER_CLS[p.tier]||'tb-c'}">${p.tier}</span>` : ''}
-          ${p.score != null ? `<span class="badge score-b">Score: ${p.score}/80</span>` : ''}
-        </div>
-      </div>
-      <div class="team-right">
-        <div class="team-price">${p.priceEst||''}</div>
-        ${sBadge(p.status)}
-        ${p.website ? `<a href="${p.website}" target="_blank" class="ws-link">Website</a>` : ''}
-      </div>
-    </div>`;
-  });
-  document.getElementById('tab-team').innerHTML = html;
 }
 
-function updateStats() {
-  const done = allTasks.filter(t => t.status==='Done').length;
-  if (allTasks.length) document.getElementById('s-tasks').textContent = `${done}/${allTasks.length}`;
-  const contacted = allVendors.filter(v => v.status && v.status!=='Not contacted').length;
-  const booked = allVendors.filter(v => v.status==='Booked').length;
-  if (allVendors.length) {
-    document.getElementById('s-contacted').textContent = contacted;
-    document.getElementById('s-booked').textContent = booked;
+/* ---------- TODAY ---------- */
+function renderToday() {
+  const open = tasks.filter(t => !isDone(t));
+  const late = open.filter(t => dueClass(t) === 'late').sort(sortByDate);
+  const soon = open.filter(t => dueClass(t) === 'soon').sort(sortByDate);
+  const hard = open.filter(t => t.hard && t.dueDate && daysFrom(t.dueDate) >= 0).sort(sortByDate)[0];
+  const done = tasks.filter(isDone).length;
+
+  const so = $('#st-overdue'); so.querySelector('.v').textContent = late.length; so.classList.toggle('warn', late.length > 0); so.classList.toggle('good', late.length === 0);
+  $('#st-soon .v').textContent = soon.length;
+  const sh = $('#st-hard');
+  if (hard) { sh.querySelector('.v').textContent = fmt(hard.dueDate); sh.querySelector('.d').textContent = hard.name; }
+  else { sh.querySelector('.v').textContent = 'None'; sh.querySelector('.d').textContent = ''; }
+  $('#st-done .v').textContent = done + '/' + tasks.length;
+
+  const list = late.concat(soon);
+  $('#attention').innerHTML = list.length ? list.map(t => taskRow(t, { notes: true })).join('') : '<div class="empty">Nothing overdue or due in the next two weeks.</div>';
+
+  $('#ws-grid').innerHTML = WS.map(w => {
+    const mine = tasks.filter(t => t.workstream === w.name);
+    const d = mine.filter(isDone).length;
+    const next = mine.filter(t => !isDone(t) && t.dueDate).sort(sortByDate)[0];
+    const pct = mine.length ? Math.round(d / mine.length * 100) : 0;
+    const nextHtml = next ? `<span class="next${dueClass(next) === 'late' ? ' late' : ''}">Next: <b>${esc(next.name)}</b> · ${fmt(next.dueDate)}</span>` : `<span class="next">${esc(w.blurb)}</span>`;
+    return `<button type="button" class="card ws" data-ws="${esc(w.name)}">
+      <span class="top-line"><h3>${esc(w.name)}</h3><span class="count">${d}/${mine.length}</span></span>
+      <span class="bar"><i style="width:${pct}%"></i></span>
+      ${nextHtml}
+    </button>`;
+  }).join('');
+  document.querySelectorAll('.ws[data-ws]').forEach(b => b.addEventListener('click', () => {
+    state.ws = b.dataset.ws; state.group = 'month'; location.hash = 'plan';
+  }));
+}
+
+/* ---------- Team board ---------- */
+const ROLES = [
+  { role: 'Venue', fixed: 'booked', who: 'Hempstead House, Sands Point Preserve' },
+  { role: 'Caterer', fixed: 'booked', who: 'Philip Stone Caterers' },
+  { role: 'Planner', cat: 'Planner/Coordinator' },
+  { role: 'Photographer', cat: 'Photographer' },
+  { role: 'Videographer', cat: 'Videographer' },
+  { role: 'Florals & decor', florals: true },
+  { role: 'Music & bilingual MC' },
+  { role: 'Hair & makeup' },
+  { role: 'Officiant' },
+  { role: 'Cake' },
+  { role: 'Stationery' },
+  { role: 'Transport & valet' },
+  { role: 'Rentals', fixed: 'quote', who: 'Party Rental Ltd (required)' },
+  { role: 'Lighting', fixed: 'quote', who: 'Fusion Lighting (required)' }
+];
+function roleStatus(r) {
+  if (r.fixed === 'booked') return { cls: 'booked', label: 'Booked', who: r.who };
+  if (r.fixed === 'quote') return { cls: 'quote', label: 'Quote needed', who: r.who };
+  const pool = r.florals ? vendors : r.cat ? team.filter(t => t.category === r.cat) : [];
+  const b = pool.find(p => p.status === 'Booked');
+  if (b) return { cls: 'booked', label: 'Booked', who: b.name };
+  const talking = pool.filter(p => p.status && p.status !== 'Not contacted' && p.status !== 'Pass').length;
+  if (pool.length) return { cls: 'research', label: talking ? talking + ' in talks' : pool.length + ' on shortlist', who: talking ? '' : 'None contacted yet' };
+  return { cls: 'none', label: 'Not started', who: '' };
+}
+function renderTeam(sel, compact) {
+  const roles = compact ? ROLES.filter(r => !r.fixed || r.fixed === 'booked').slice(0, 8) : ROLES;
+  $(sel).innerHTML = roles.map(r => {
+    const s = roleStatus(r);
+    return `<div><span><span class="role">${esc(r.role)}</span>${s.who ? `<br><span class="who">${esc(s.who)}</span>` : ''}</span><span class="st ${s.cls}">${esc(s.label)}</span></div>`;
+  }).join('');
+}
+
+/* ---------- PLAN ---------- */
+function renderPlanFilters() {
+  const owners = [...new Set(tasks.map(t => t.owner).filter(Boolean))].sort();
+  const sel = $('#f-owner');
+  sel.innerHTML = '<option value="all">Everyone</option>' + owners.map(o => `<option value="${esc(o)}">${esc(o)}</option>`).join('');
+  sel.value = owners.includes(state.owner) ? state.owner : 'all';
+  $('#f-ws').innerHTML = ['all'].concat(WS.map(w => w.name)).map(n =>
+    `<button type="button" class="pill${state.ws === n ? ' on' : ''}" data-f="${esc(n)}">${n === 'all' ? 'All workstreams' : esc(n)}</button>`).join('');
+  document.querySelectorAll('#f-ws .pill').forEach(b => b.addEventListener('click', () => { state.ws = b.dataset.f; renderPlan(); }));
+  $('#g-month').classList.toggle('on', state.group === 'month');
+  $('#g-ws').classList.toggle('on', state.group === 'ws');
+}
+function renderPlan() {
+  renderPlanFilters();
+  const q = state.q.toLowerCase();
+  const list = tasks.filter(t =>
+    (!state.hideDone || !isDone(t)) &&
+    (state.owner === 'all' || t.owner === state.owner) &&
+    (state.ws === 'all' || t.workstream === state.ws) &&
+    (!q || (t.name + ' ' + (t.notes || '')).toLowerCase().includes(q))
+  ).sort(sortByDate);
+  let groups = [];
+  if (state.group === 'month') {
+    const map = new Map();
+    list.forEach(t => {
+      const k = t.dueDate ? t.dueDate.slice(0, 7) : 'none';
+      if (!map.has(k)) map.set(k, []); map.get(k).push(t);
+    });
+    groups = [...map.entries()].map(([k, items]) => ({
+      title: k === 'none' ? 'No date' : new Date(k + '-15T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' }), items, ws: false
+    }));
+  } else {
+    groups = WS.map(w => ({ title: w.name, items: list.filter(t => t.workstream === w.name), ws: true })).filter(g => g.items.length);
+    const other = list.filter(t => !WS.some(w => w.name === t.workstream));
+    if (other.length) groups.push({ title: 'Not filed', items: other, ws: false });
   }
+  $('#plan-list').innerHTML = groups.length ? groups.map(g => `
+    <div class="group-title"><h3>${esc(g.title)}</h3><span>${g.items.length} task${g.items.length === 1 ? '' : 's'}</span></div>
+    <div class="card list">${g.items.map(t => taskRow(t, { noWs: g.ws || state.ws !== 'all', notes: true, year: true })).join('')}</div>`).join('')
+    : '<div class="card empty">No tasks match these filters.</div>';
 }
 
-// THEME (same three modes as HQ: Auto follows the device)
-const MODES = ['auto','light','dark'];
+/* ---------- MONEY ---------- */
+const TAX = 0.08625, ADMIN = 0.20;
+const cater = n => (n * (205 + 50 + 60) + 500) * (1 + ADMIN) * (1 + TAX);
+function renderPayments() {
+  const total230 = cater(230), dep = 15561, raised = total230 * 0.25;
+  const rows = [
+    ['Jul 17, 2026', 'Venue deposit (non-refundable). Confirm in writing.', '$6,000'],
+    ['Jul 17, 2026', 'Catering deposit, 25% (non-refundable). Confirm in writing.', '$15,561'],
+    ['Jan 21, 2027', 'Catering second 25%, due 120 days before', usd(dep) + ' – ' + usd(raised)],
+    ['Mar 22, 2027', 'Marriage license window opens (valid 60 days, 24-hour wait)', '$40'],
+    ['Apr 21, 2027', 'Final menu to Philip Stone', ''],
+    ['Apr 30, 2027', '$2M liability insurance, three certificates to the venue (permit: 14 business days before)', '~$300–700'],
+    ['May 7, 2027', 'Venue balance and refundable security deposit, cashier\'s checks', '$6,000 + $5,000'],
+    ['May 13, 2027', 'Final guest count to Philip Stone (becomes the minimum)', ''],
+    ['May 16, 2027', 'Catering balance with signed final count, at 230 guests', usd(total230 - dep - raised) + ' – ' + usd(total230 - 2 * dep)],
+    ['May 21, 2027', 'Police officers in cash, plus vendor tips', '~$1,750 + tips'],
+    ['May 28, 2027', 'Security deposit back, minus any damages', '+$5,000']
+  ];
+  $('#pay-rows').innerHTML = rows.map(r => `<tr><td class="mono">${r[0]}</td><td>${esc(r[1])}</td><td class="num">${esc(r[2])}</td></tr>`).join('');
+}
+const LINES = [
+  ['Venue fee', 'Permit, Friday rate', () => 12000, () => 12000],
+  ['Catering', 'Contract rates', cater, cater],
+  ['Rentals (Party Rental Ltd)', 'Required, $100–130 per guest', n => n * 100 * (1 + TAX), n => n * 130 * (1 + TAX)],
+  ['Vendor meals', '12–16 at $75, plus admin and tax', () => 12 * 75 * (1 + ADMIN) * (1 + TAX), () => 16 * 75 * (1 + ADMIN) * (1 + TAX)],
+  ['Police (2–3 officers)', '$125/hr, cash that night', () => 1500, () => 2600],
+  ['Planner', 'Month-of to partial', () => 3000, () => 12000],
+  ['Photographer', 'Your shortlist', () => 4000, () => 12000],
+  ['Videographer', 'Your shortlist', () => 3500, () => 10000],
+  ['Florals & decor', 'Ceremony and reception', n => 8000 + n * 20, n => 18000 + n * 60],
+  ['Fusion lighting', 'Required, quote needed', () => 2000, () => 6000],
+  ['Music & bilingual MC', 'DJ to band, ceremony musicians', () => 3000, () => 15000],
+  ['Attire & rings', 'Dress, qipao, suit, alterations, bands', () => 6000, () => 18000],
+  ['Hair & makeup', 'Bride with trial, mothers', () => 1500, () => 3500],
+  ['Stationery & signage', 'Save-the-dates to menus', n => 1000 + n * 5, n => 2500 + n * 12],
+  ['Cake', 'Outside baker', n => 800 + n * 4, n => 1500 + n * 10],
+  ['Transport & shuttle', 'Couple car, Flushing shuttle', () => 1500, () => 4500],
+  ['Valet', 'Prime Valet, quote needed', () => 1500, () => 3500],
+  ['Traditions', 'Tea set, betrothal gifts, red envelopes', () => 800, () => 3000],
+  ['Officiant, license, insurance', 'Liability for 3 certificates', () => 700, () => 2000],
+  ['Tips', 'Staff and vendors', n => 2500 + n * 5, n => 4500 + n * 10],
+  ['Favors & gifts', 'Guests, wedding party, parents', n => 500 + n * 4, n => 1500 + n * 10]
+];
+function renderBudget() {
+  const n = +$('#guests').value;
+  $('#guests-out').textContent = n;
+  let lo = 0, hi = 0, cLo = 0, cHi = 0, html = '';
+  LINES.forEach((l, i) => {
+    const a = l[2](n), b = l[3](n);
+    lo += a; hi += b; if (i < 3) { cLo += a; cHi += b; }
+    html += `<tr><td>${l[0]}</td><td>${l[1]}</td><td class="num">${usd(a)}</td><td class="num">${usd(b)}</td></tr>`;
+  });
+  const cl = lo * 0.05, ch = hi * 0.10;
+  html += `<tr><td>Contingency</td><td>5–10%</td><td class="num">${usd(cl)}</td><td class="num">${usd(ch)}</td></tr>`;
+  lo += cl; hi += ch;
+  $('#budget-rows').innerHTML = html;
+  $('#t-core').textContent = usd(cLo) + ' – ' + usd(cHi);
+  $('#t-rest').textContent = usd(lo - cLo) + ' – ' + usd(hi - cHi);
+  $('#t-all').textContent = usd(lo) + ' – ' + usd(hi);
+}
+
+/* ---------- VENDORS shortlist ---------- */
+const STATUS_CLS = { 'Booked': 'booked', 'Responded': 'research', 'Email sent': 'research', 'Call scheduled': 'research', 'Quote received': 'research', 'Pass': 'none' };
+function stBadge(s) { return `<span class="st ${STATUS_CLS[s] || 'none'}">${esc(s || 'Not contacted')}</span>`; }
+function renderShortlist() {
+  $('#s-team').classList.toggle('on', state.shortlist === 'team');
+  $('#s-floral').classList.toggle('on', state.shortlist === 'floral');
+  let html = '';
+  if (state.shortlist === 'team') {
+    const cats = ['all', 'Photographer', 'Videographer', 'Planner/Coordinator'];
+    html += `<div class="pills">${cats.map(c => `<button type="button" class="pill${state.tCat === c ? ' on' : ''}" data-c="${esc(c)}">${c === 'all' ? 'All' : esc(c)} (${c === 'all' ? team.length : team.filter(t => t.category === c).length})</button>`).join('')}</div>`;
+    const list = team.filter(t => state.tCat === 'all' || t.category === state.tCat);
+    html += `<div class="card table-wrap"><table><thead><tr><th>Name</th><th>Type</th><th>Est. price</th><th>Status</th><th>Notes</th></tr></thead><tbody>${list.map(p => `<tr>
+      <td><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.name)}</a>${p.website ? `<br><a class="small" href="${esc(safeUrl(p.website))}" target="_blank" rel="noopener">Website</a>` : ''}</td>
+      <td>${esc(p.category)}<br><span class="small">${esc(p.location)}</span></td>
+      <td class="mono">${esc(p.priceEst)}</td>
+      <td>${stBadge(p.status)}</td>
+      <td>${esc(p.notes)}${p.publications ? `<br><span class="small">${esc(p.publications)}</span>` : ''}</td></tr>`).join('')}</tbody></table></div>`;
+  } else {
+    const regions = ['all', 'Long Island', 'NYC', 'NJ'];
+    const list = vendors.filter(v => (state.vRegion === 'all' || v.region === state.vRegion) && (state.vStatus === 'all' || (state.vStatus === 'contacted' ? v.status && v.status !== 'Not contacted' : v.status === state.vStatus)));
+    html += `<div class="pills">${regions.map(r => `<button type="button" class="pill${state.vRegion === r ? ' on' : ''}" data-r="${esc(r)}">${r === 'all' ? 'All regions' : esc(r)}</button>`).join('')}
+      <button type="button" class="pill${state.vStatus === 'contacted' ? ' on' : ''}" data-s="contacted">Contacted</button>
+      <button type="button" class="pill${state.vStatus === 'Booked' ? ' on' : ''}" data-s="Booked">Booked</button></div>`;
+    html += `<p class="small">${list.length} florists · ${vendors.filter(v => (v.tier || '').includes('1')).length} with direct emails · ${vendors.filter(v => v.status && v.status !== 'Not contacted').length} contacted</p>`;
+    html += `<div class="card table-wrap"><table><thead><tr><th>Company</th><th>Region</th><th>Contact</th><th>Status</th><th>Notes</th></tr></thead><tbody>${list.map(v => `<tr>
+      <td><a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.name)}</a></td>
+      <td>${esc(v.region)}</td><td>${(v.tier || '').includes('1') ? 'Email' : 'Form'}</td>
+      <td>${stBadge(v.status)}</td><td>${esc(v.notes)}</td></tr>`).join('')}</tbody></table></div>`;
+  }
+  $('#shortlist').innerHTML = html;
+  document.querySelectorAll('#shortlist [data-c]').forEach(b => b.addEventListener('click', () => { state.tCat = b.dataset.c; renderShortlist(); }));
+  document.querySelectorAll('#shortlist [data-r]').forEach(b => b.addEventListener('click', () => { state.vRegion = b.dataset.r; renderShortlist(); }));
+  document.querySelectorAll('#shortlist [data-s]').forEach(b => b.addEventListener('click', () => { state.vStatus = state.vStatus === b.dataset.s ? 'all' : b.dataset.s; renderShortlist(); }));
+}
+
+/* ---------- static: day and rules ---------- */
+const DAY = [
+  ['9:00', '<b>Venue opens.</b> Rentals, florist and Fusion load in.'],
+  ['10:00', '<b>Hair and makeup</b> in the second-floor rooms. Or door games and pickup at home, if you do them.'],
+  ['1:30', '<b>Tea ceremony</b> with parents and elders, about 45 minutes. Qipao or <span class="zh">裙褂</span>.'],
+  ['2:45', '<b>Into the wedding dress.</b> Optional first look, then couple portraits.'],
+  ['4:00', '<b>Family and wedding party photos.</b> Rain call made by now.'],
+  ['5:00', '<b>Guests arrive.</b> Welcome drinks, valet, shuttle drop-off.'],
+  ['5:30', '<b>Ceremony</b> in the Rose Garden, about 30 minutes.'],
+  ['6:00', '<b>Cocktail hour</b> on the patio.'],
+  ['7:00', '<b>Grand entrance,</b> welcome by parents, first dance, first course.'],
+  ['7:45', '<b>Golden-hour portraits,</b> 15 minutes.'],
+  ['8:22', '<b>Sunset.</b> Entrées and toasts.', 'sun'],
+  ['8:45', '<b>Outfit change</b> and <span class="zh">敬酒</span> table toasts. At about 23 tables, allow 45 to 60 minutes.'],
+  ['9:45', '<b>Cake and dancing.</b> Dessert parade.'],
+  ['10:50', '<b>Last dance and send-off</b> with ribbon wands or bubbles, no sparklers.'],
+  ['11:00', '<b>Music off.</b> Trash out by 1 AM, everything else by 10 AM Saturday.']
+];
+const RULES = [
+  ['Hours', 'Access 9 AM to midnight. Event 5 to 11 PM: 30 min arrival, 30 min ceremony, 1 hr cocktails, 4 hr reception.'],
+  ['Guests', '250 seated maximum. Contract guarantees 150 adults, 0 children.'],
+  ['Food', 'Philip Stone only. No cooking on site, cook tent only. Menu final one month out. Tasting extra. Cake not included. Vendor meals $75 each.'],
+  ['Rentals', 'Party Rental Ltd only, billed to you, from about $100 per guest.'],
+  ['Lighting', 'Fusion Lighting is the only perimeter lighting vendor.'],
+  ['Security', 'At least 2 Sands Point officers at $125/hr, paid in cash that night. A security officer at each entrance.'],
+  ['Effects', 'No open flames, sparklers, fireworks, confetti or fog. Candles inside glass only.'],
+  ['Outdoors', 'Patio drinks until 30 minutes before dark. Village noise ordinance applies.'],
+  ['Insurance', 'You: $2M general liability naming the Conservancy, Nassau County and Village of Sands Point, on three separate certificates. Each vendor: $1M naming Philip Stone.'],
+  ['Approvals', 'The Conservancy approves every vendor (Section 17). You are liable for what they do.'],
+  ['Cleanup', 'Trash out within 2 hours of the end. Rentals and belongings out within 11 hours.'],
+  ['Payments', 'Venue: bank or cashier\'s check. Catering final: cash or certified check, 5 days before, with the signed count.'],
+  ['Fine print', 'The 20% admin charge is not a gratuity. Overtime is 20% of the facility rental per hour. The caterer may use event photos for marketing.']
+];
+function renderStatic() {
+  $('#day-rows').innerHTML = DAY.map(d => `<div class="t${d[2] ? ' ' + d[2] : ''}">${d[0]}</div><div class="w">${d[1]}</div>`).join('');
+  $('#rule-rows').innerHTML = RULES.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('');
+  $('#notion-tasks').href = TASKS_URL;
+  $('#notion-hub').href = HUB_URL;
+  const days = Math.ceil((WEDDING - new Date()) / 86400000);
+  $('#countdown').textContent = days > 0 ? days.toLocaleString() + ' days to go' : 'Married!';
+}
+
+/* ---------- router ---------- */
+const VIEWS = ['today', 'plan', 'money', 'vendors', 'day', 'venue'];
+function route() {
+  let v = location.hash.replace('#', '');
+  if (!VIEWS.includes(v)) v = 'today';
+  VIEWS.forEach(id => { document.getElementById('view-' + id).hidden = id !== v; });
+  document.querySelectorAll('nav.tabs a').forEach(a => a.classList.toggle('on', a.dataset.view === v));
+  if (v === 'plan') renderPlan();
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+
+/* ---------- controls ---------- */
+$('#g-month').addEventListener('click', () => { state.group = 'month'; renderPlan(); });
+$('#g-ws').addEventListener('click', () => { state.group = 'ws'; renderPlan(); });
+$('#f-owner').addEventListener('change', e => { state.owner = e.target.value; renderPlan(); });
+$('#f-hide').addEventListener('change', e => { state.hideDone = e.target.checked; renderPlan(); });
+$('#f-q').addEventListener('input', e => { state.q = e.target.value; renderPlan(); });
+$('#guests').addEventListener('input', renderBudget);
+$('#s-team').addEventListener('click', () => { state.shortlist = 'team'; renderShortlist(); });
+$('#s-floral').addEventListener('click', () => { state.shortlist = 'floral'; renderShortlist(); });
+
+/* theme: Auto follows the device, same three modes as HQ */
+const MODES = ['auto', 'light', 'dark'];
 let mode = 'auto';
-try { mode = localStorage.getItem('wedtheme') || 'auto'; } catch(e) {}
+try { mode = localStorage.getItem('wedtheme') || 'auto'; } catch (e) {}
 if (!MODES.includes(mode)) mode = 'auto';
 function applyTheme() {
   if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
   else document.documentElement.setAttribute('data-theme', mode);
-  document.getElementById('themebtn').textContent = 'Theme: ' + mode[0].toUpperCase() + mode.slice(1);
+  $('#themebtn').textContent = 'Theme: ' + mode[0].toUpperCase() + mode.slice(1);
 }
-document.getElementById('themebtn').addEventListener('click', () => {
-  mode = MODES[(MODES.indexOf(mode)+1) % 3];
-  try { localStorage.setItem('wedtheme', mode); } catch(e) {}
+$('#themebtn').addEventListener('click', () => {
+  mode = MODES[(MODES.indexOf(mode) + 1) % 3];
+  try { localStorage.setItem('wedtheme', mode); } catch (e) {}
   applyTheme();
 });
-applyTheme();
 
-loadTasks();
-loadVendors();
-loadTeam();
+/* ---------- load ---------- */
+async function getJSON(name) {
+  const r = await fetch('./' + name + '?t=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error(name + ' could not be loaded (' + r.status + ')');
+  return r.json();
+}
+async function load() {
+  const [t, v, m, meta] = await Promise.allSettled([getJSON('tasks.json'), getJSON('vendors.json'), getJSON('team.json'), getJSON('task-meta.json')]);
+  if (t.status === 'fulfilled') { tasks = t.value.data || []; updated = t.value.updated; }
+  else $('#attention').innerHTML = `<div class="err">${esc(t.reason.message)}</div>`;
+  // Fallback until the Notion sync pulls Workstream and Hard date itself: fill them in by page id
+  const extra = meta.status === 'fulfilled' ? meta.value.tasks || {} : {};
+  tasks.forEach(task => {
+    const id = ((task.url || '').match(/([0-9a-f]{32})(?:\?|$)/) || [])[1];
+    const x = id && extra[id];
+    if (x) { if (!task.workstream) task.workstream = x.workstream; if (task.hard == null) task.hard = x.hard; }
+  });
+  if (v.status === 'fulfilled') vendors = v.value.data || [];
+  if (m.status === 'fulfilled') team = m.value.data || [];
+  renderToday();
+  renderTeam('#team-mini', true);
+  renderTeam('#team-full', false);
+  renderShortlist();
+  $('#updated').textContent = updated ? 'Data updated ' + ago(updated) : 'Data not loaded';
+  route();
+}
+
+applyTheme();
+renderStatic();
+renderPayments();
+renderBudget();
+route();
+load();
 </script>
 </body>
 </html>
